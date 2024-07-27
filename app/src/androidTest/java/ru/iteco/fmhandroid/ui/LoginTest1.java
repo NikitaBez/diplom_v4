@@ -1,23 +1,36 @@
 package ru.iteco.fmhandroid.ui;
 
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
-import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.IdlingResource;
+import android.opengl.GLException;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -33,61 +46,52 @@ public class LoginTest1 {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-    private SimpleIdlingResource idlingResource;
-
-    @Before
-    public void setUp() {
-        idlingResource = new SimpleIdlingResource();
-        IdlingRegistry.getInstance().register(idlingResource);
-    }
-
-    @After
-    public void tearDown() {
-        IdlingRegistry.getInstance().unregister(idlingResource);
-    }
-
     @Test
     public void loginTest1() {
-        idlingResource.setIdleState(false);
 
-        // Запустить задержку в фоновом потоке
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(10000); // 5 секунд задержки
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                // Установить состояние ожидания в true по окончании задержки
-                idlingResource.setIdleState(true);
-            }
-        }).start();
+        String LOGIN = "login2";
+        String PASSWORD = "password2";
+
+        try {
+            Thread.sleep(5000);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // Проверяем и вводим логин
-        ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
-        textInputEditText.check(matches(isDisplayed()));
-        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
+        ViewInteraction textInputlogin = onView(withHint("Login"));
+        textInputlogin.check(matches(isDisplayed()));
+        textInputlogin.perform(typeText(LOGIN), closeSoftKeyboard());
 
         // Проверяем и вводим пароль
-        ViewInteraction textInputEditText2 = onView(withId(R.id.password_text_input_layout));
-        textInputEditText2.check(matches(isDisplayed()));
-        textInputEditText2.perform(replaceText("password2"), closeSoftKeyboard());
+        ViewInteraction textInputPassword = onView(withHint("Password"));
+        textInputPassword.check(matches(isDisplayed()));
+        textInputPassword.perform(typeText(PASSWORD), closeSoftKeyboard());
 
         // Нажимаем на кнопку входа
-        ViewInteraction materialButton = onView(withId(R.id.enter_button));
-        materialButton.check(matches(isDisplayed()));
-        materialButton.perform(click());
+        ViewInteraction materialEnterButton = onView(withId(R.id.enter_button));
+        materialEnterButton.check(matches(isDisplayed()));
+        materialEnterButton.perform(click());
 
-        // Проверяем и нажимаем на кнопку авторизации = дальше я не оптимизировал
-        onView(withId(R.id.authorization_image_button)).check(matches(isDisplayed()));
-        onView(withId(R.id.authorization_image_button)).perform(click());
+        try {
+            Thread.sleep(5000);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        // Проверяем и нажимаем на кнопку выхода
-        onView(withText("Log out")).check(matches(isDisplayed()));
-        onView(withText("Log out")).perform(click());
+        // Проверка открытия гравной страницы с блоком новостей
+        ViewInteraction assertMainPage = onView(withId(R.id.all_news_text_view));
+        assertMainPage.check(matches(isDisplayed()));
+        assertMainPage.check(matches(withText("ALL NEWS")));
 
-        // Проверяем, что мы снова на экране авторизации
-        onView(withText("Authorization")).check(matches(isDisplayed()));
+        // Разлогинивание - нажатие на меню разлогинивания
+        ViewInteraction tapAuthorizationBtn = onView(withId(R.id.authorization_image_button));
+        tapAuthorizationBtn.check(matches(isDisplayed()));
+        tapAuthorizationBtn.perform(click());
+
+        // Разлогинивание - нажатие на выход
+        ViewInteraction logOffBtn = onView(withId(android.R.id.title));
+        logOffBtn.check(matches(isDisplayed()));
+        logOffBtn.perform(click());
     }
 }
