@@ -9,14 +9,6 @@ public class LoginSteps {
 
     private LoginPage loginPage = new LoginPage();
 
-//    public void login(String login, String password) {
-//        loginPage.waitForElement(R.id.login_text_input_layout, 5000); // Ожидание появления поля логина
-//        loginPage.enterLogin(login);
-//        loginPage.enterPassword(password);
-//        loginPage.clickLoginButton();
-//        loginPage.waitForElement(R.id.authorization_image_button, 5000);
-//    }
-
     public void login(DataHelper dataHelper) {
         loginPage.waitForElement(R.id.login_text_input_layout, 5000); // Ожидание появления поля логина
         loginPage.enterLogin(dataHelper.getLogin());

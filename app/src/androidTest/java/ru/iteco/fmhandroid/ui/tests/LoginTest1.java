@@ -14,17 +14,16 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.LoginSteps;
 import ru.iteco.fmhandroid.ui.pageobjects.NewsPage;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
+import ru.iteco.fmhandroid.ui.utils.Logged;
 
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class LoginTest1 {
 
-    private String LOGIN = "login2";
-    private String PASSWORD = "password2";
-
     private LoginSteps loginSteps;
     private NewsPage newsPage;
+    private Logged logged;
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -34,6 +33,10 @@ public class LoginTest1 {
     public void setUp() {
         loginSteps = new LoginSteps();
         newsPage = new NewsPage();
+        logged = new Logged();
+
+        // Проверка состояния входа и выход из приложения, если вход выполнен
+        logged.ensureLoggedOut();
     }
 
     @Test
@@ -44,8 +47,6 @@ public class LoginTest1 {
 
         // Логинимся
         loginSteps.login(validCredentials);
-
-//        loginSteps.login(LOGIN, PASSWORD);
 
         // Проверка открытия главной страницы с блоком новостей
         newsPage.waitForElement(R.id.all_news_text_view, 5000);
