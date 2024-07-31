@@ -57,4 +57,24 @@ public class LoginTest1 {
         newsPage.waitForElement(android.R.id.title, 5000);
         newsPage.clickLogOffButton();
     }
+
+    @Test
+    public void invalidLoginTest() {
+        DataHelper invalidLogin = DataHelper.invalidLogin();
+        loginSteps.login(invalidLogin);
+        // Добавить проверку ошибки логина
+    }
+    @Test
+    public void invalidPasswordTest() {
+        DataHelper invalidPassword = DataHelper.invalidPassword();
+        loginSteps.login(invalidPassword);
+        // Добавить проверку ошибки пароля
+    }
+
+    @Test
+    public void invalidCredentialsTest() {
+        DataHelper invalidCredentials = DataHelper.invalidCredentials();
+        loginSteps.login(invalidCredentials);
+        // Добавить проверку ошибки логина и пароля
+    }
 }
