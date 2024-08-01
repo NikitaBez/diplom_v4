@@ -1,9 +1,14 @@
 package ru.iteco.fmhandroid.ui.tests;
 
+import android.view.View;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.matcher.ViewMatchers;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,7 +20,13 @@ import ru.iteco.fmhandroid.ui.steps.LoginSteps;
 import ru.iteco.fmhandroid.ui.pageobjects.NewsPage;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.utils.Logged;
+import ru.iteco.fmhandroid.ui.utils.ToastMatcher;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -24,6 +35,7 @@ public class LoginTest1 {
     private LoginSteps loginSteps;
     private NewsPage newsPage;
     private Logged logged;
+    private View decorView;
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -34,6 +46,18 @@ public class LoginTest1 {
         loginSteps = new LoginSteps();
         newsPage = new NewsPage();
         logged = new Logged();
+
+        // Инициализация decorView
+        mActivityScenarioRule.getScenario().onActivity(new ActivityScenario.ActivityAction<AppActivity>() {
+            @Override
+            public void perform(AppActivity activity) {
+                decorView = activity.getWindow().getDecorView();
+            }
+        });
+
+        // Получаем decorView из ActivityScenario
+//        mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
+
 
         // Проверка состояния входа и выход из приложения, если вход выполнен
         logged.ensureLoggedOut();
@@ -62,19 +86,39 @@ public class LoginTest1 {
     public void invalidLoginTest() {
         DataHelper invalidLogin = DataHelper.invalidLogin();
         loginSteps.login(invalidLogin);
-        // Добавить проверку ошибки логина
+        // Проверка ошибки логина
+        onView(withText("Something went wrong. Try again later."))
+                .inRoot(withDecorView(Matchers.not(decorView)))
+                .check(matches(isDisplayed()));
+//        onView(ViewMatchers.withText(Matchers.any(String.class)))
+//                .inRoot(new ToastMatcher())
+//                .check(matches(isDisplayed()));
     }
+
     @Test
     public void invalidPasswordTest() {
         DataHelper invalidPassword = DataHelper.invalidPassword();
         loginSteps.login(invalidPassword);
-        // Добавить проверку ошибки пароля
+        // Проверка ошибки логина
+        onView(withText("Something went wrong. Try again later."))
+                .inRoot(withDecorView(Matchers.not(decorView)))
+                .check(matches(isDisplayed()));
+//        onView(ViewMatchers.withText(Matchers.any(String.class)))
+//                .inRoot(new ToastMatcher())
+//                .check(matches(isDisplayed()));
     }
 
     @Test
     public void invalidCredentialsTest() {
         DataHelper invalidCredentials = DataHelper.invalidCredentials();
         loginSteps.login(invalidCredentials);
-        // Добавить проверку ошибки логина и пароля
+        // Проверка ошибки логина
+        onView(withText("Something went wrong. Try again later."))
+                .inRoot(withDecorView(Matchers.not(decorView)))
+                .check(matches(isDisplayed()));
+//        onView(ViewMatchers.withText(Matchers.any(String.class)))
+//                .inRoot(new ToastMatcher())
+//                .check(matches(isDisplayed()));
     }
+
 }

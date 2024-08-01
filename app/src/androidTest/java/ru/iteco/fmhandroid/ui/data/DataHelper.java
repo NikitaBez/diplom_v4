@@ -46,4 +46,8 @@ public class DataHelper {
     public static DataHelper invalidCredentials() {
         return new DataHelper(generateRandomString(10), generateRandomString(10));
     }
+
+    public static DataHelper emptyLogin(){
+        return new DataHelper("","password2");
+    }
 }
