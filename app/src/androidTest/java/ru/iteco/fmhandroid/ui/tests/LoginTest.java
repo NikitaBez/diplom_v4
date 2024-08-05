@@ -18,6 +18,9 @@ import ru.iteco.fmhandroid.ui.steps.LoginSteps;
 import ru.iteco.fmhandroid.ui.pageobjects.NewsPage;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.utils.Logged;
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -27,7 +30,7 @@ import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static org.hamcrest.Matchers.not;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class LoginTest {
 
     private LoginSteps loginSteps;
@@ -52,6 +55,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Authorization with valid login and password")
+    @Description("The user logs into the application using valid login and password data")
     public void validLoginAndPassword() {
         // Получаем валидные данные для логина
         DataHelper validCredentials = DataHelper.validCredentials();
@@ -67,6 +72,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Entering an invalid login and a valid password")
+    @Description("Error logging into the application after entering an invalid login and valid password")
     public void invalidLoginAndValidPassword() {
         DataHelper invalidLogin = DataHelper.invalidLogin();
         loginSteps.invalidCredentials(invalidLogin);
@@ -76,6 +83,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Entering an valid login and a invalid password")
+    @Description("Error logging into the application after entering an valid login and invalid password")
     public void validLoginAndInvalidPassword() {
         DataHelper invalidPassword = DataHelper.invalidPassword();
         loginSteps.invalidCredentials(invalidPassword);
@@ -85,6 +94,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Entering an invalid login and a invalid password")
+    @Description("Error logging into the application after entering an invalid login and invalid password")
     public void invalidLoginAndInvalidPassword() {
         DataHelper invalidCredentials = DataHelper.invalidCredentials();
         loginSteps.invalidCredentials(invalidCredentials);
@@ -94,6 +105,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Empty login field and enter a valid password")
+    @Description("Error logging into the application after not entering login and entering valid password")
     public void emptyLoginAndValidPassword() {
         DataHelper emptyLogin = DataHelper.emptyLogin();
         loginSteps.invalidCredentials(emptyLogin);
@@ -103,6 +116,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Entering a valid password and the password field empty")
+    @Description("Error logging into the application after entering valid login and not entering password")
     public void validLoginAndEmptyPassword() {
         DataHelper emptyPassword = DataHelper.emptyPassword();
         loginSteps.invalidCredentials(emptyPassword);
@@ -112,6 +127,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Empty login and password fields")
+    @Description("Error logging into the application after not entering login and password")
     public void EmptyLoginAndEmptyPassword() {
         DataHelper emptyCredentials = DataHelper.emptyCredentials();
         loginSteps.invalidCredentials(emptyCredentials);
