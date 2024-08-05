@@ -46,14 +46,6 @@ public class LoginTest1 {
         newsPage = new NewsPage();
         logged = new Logged();
 
-        // Инициализация decorView
-//        mActivityScenarioRule.getScenario().onActivity(new ActivityScenario.ActivityAction<AppActivity>() {
-//            @Override
-//            public void perform(AppActivity activity) {
-//                decorView = activity.getWindow().getDecorView();
-//            }
-//        });
-
         mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
 
 
@@ -62,7 +54,7 @@ public class LoginTest1 {
     }
 
     @Test
-    public void loginTest1() {
+    public void loginTest1() { //Проверка входа в систему с валидными значениями логина и пароля
 
         // Получаем валидные данные для логина
         DataHelper validCredentials = DataHelper.validCredentials();
@@ -81,31 +73,60 @@ public class LoginTest1 {
     }
 
     @Test
-    public void invalidLoginTest() {
+    public void invalidLoginTest() { //Проверка входа в систему с невалидным значением логина
         DataHelper invalidLogin = DataHelper.invalidLogin();
         loginSteps.invalidCredentials(invalidLogin);
-        // Проверка ошибки логина
-        onView(withText("Something went wrong. Try again later."))
+        // Проверка Toast message
+        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
                 .inRoot(withDecorView(Matchers.not(decorView)))
                 .check(matches(isDisplayed()));
     }
 
     @Test
-    public void invalidPasswordTest() {
+    public void invalidPasswordTest() { //Проверка входа в систему с невалидным значением пароля
         DataHelper invalidPassword = DataHelper.invalidPassword();
         loginSteps.invalidCredentials(invalidPassword);
-        // Проверка ошибки логина
-        onView(withText("Something went wrong. Try again later."))
+        // Проверка Toast message
+        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
                 .inRoot(withDecorView(Matchers.not(decorView)))
                 .check(matches(isDisplayed()));
     }
 
     @Test
-    public void invalidCredentialsTest() {
+    public void invalidCredentialsTest() { //Проверка входа в систему с невалидными значениями логина и пароля
         DataHelper invalidCredentials = DataHelper.invalidCredentials();
         loginSteps.invalidCredentials(invalidCredentials);
-        // Проверка ошибки логина
-        onView(withText("Something went wrong. Try again later."))
+        // Проверка Toast message
+        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
+                .inRoot(withDecorView(Matchers.not(decorView)))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void emptyLogin() { //Проверка входа в систему с пустым полем логина
+        DataHelper emptyLogin = DataHelper.emptyLogin();
+        loginSteps.invalidCredentials(emptyLogin);
+        // Проверка Toast message
+        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
+                .inRoot(withDecorView(Matchers.not(decorView)))
+                .check(matches(isDisplayed()));
+    }
+    @Test
+    public void emptyPassword() { //Проверка входа в систему с пустым полем пароля
+        DataHelper emptyPassword = DataHelper.emptyPassword();
+        loginSteps.invalidCredentials(emptyPassword);
+        // Проверка Toast message
+        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
+                .inRoot(withDecorView(Matchers.not(decorView)))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void emptyCredentials() { //Проверка входа в систему с пустымями логина и пароля
+        DataHelper emptyCredentials = DataHelper.emptyCredentials();
+        loginSteps.invalidCredentials(emptyCredentials);
+        // Проверка Toast message
+        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
                 .inRoot(withDecorView(Matchers.not(decorView)))
                 .check(matches(isDisplayed()));
     }

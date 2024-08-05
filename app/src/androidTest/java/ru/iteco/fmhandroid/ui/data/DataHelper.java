@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class DataHelper {
 
+    // Определение статических финальных полей для логина и пароля
+    public static final String VALID_LOGIN = "login2";
+    public static final String VALID_PASSWORD = "password2";
+
     private String login;
     private String password;
 
@@ -32,15 +36,15 @@ public class DataHelper {
     }
 
     public static DataHelper validCredentials() {
-        return new DataHelper("login2", "password2");
+        return new DataHelper(VALID_LOGIN, VALID_PASSWORD);
     }
 
     public static DataHelper invalidLogin() {
-        return new DataHelper(generateRandomString(10), "password2");
+        return new DataHelper(generateRandomString(10), VALID_PASSWORD);
     }
 
     public static DataHelper invalidPassword() {
-        return new DataHelper("login2", generateRandomString(10));
+        return new DataHelper(VALID_LOGIN, generateRandomString(10));
     }
 
     public static DataHelper invalidCredentials() {
@@ -48,6 +52,18 @@ public class DataHelper {
     }
 
     public static DataHelper emptyLogin(){
-        return new DataHelper("","password2");
+        return new DataHelper("",VALID_PASSWORD);
     }
+
+    public static DataHelper emptyPassword(){
+        return new DataHelper(VALID_LOGIN,"");
+    }
+
+    public static DataHelper emptyCredentials(){
+        return new DataHelper("","");
+    }
+
+    public static final String TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD = "Something went wrong. Try again later.";
+    public static final String TOAST_MESSAGE_EMPTY_DATA = "Login and password cannot be empty";
+
 }
