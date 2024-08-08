@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.tests;
 
 import android.view.View;
 
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
@@ -140,11 +141,54 @@ public class LoginTest {
     @Test
     @DisplayName("Logout test")
     @Description("Logout. Go to the authorization page")
-    public void LogoutTest(){
+    public void LogoutTest() {
         DataHelper validCredentials = DataHelper.validCredentials();
         loginSteps.login(validCredentials);
         mainPage.verifyMainPageWithShortNews();
         mainPage.autoLogout();
         loginPage.checkLoginPage();
     }
+
+    @Test
+    @DisplayName("Previously saved Login test")
+    @Description("Login with previously saved Login and Password")
+    public void SavedLoginTest() {
+        DataHelper validCredentials = DataHelper.validCredentials();
+
+        // Вход с ранее сохраненными Логином и Паролем
+        loginSteps.login(validCredentials);
+
+        // Проверка, что основная страница с краткими новостями видима
+        mainPage.verifyMainPageWithShortNews();
+
+        // Закрытие приложения
+        closeApp();
+
+        // Перезапуск приложения
+        restartApp();
+
+        // Повторная проверка, что основная страница с краткими новостями снова видима
+        mainPage.verifyMainPageWithShortNews();
+    }
+
+    // Метод для закрытия приложения
+    private void closeApp() {
+        // Ждем, пока элемент не станет видимым (например, чтобы убедиться, что активность готова к закрытию)
+        loginPage.waitForElement(R.id.login_text_input_layout, 5000);
+
+        // Завершаем активность
+        mActivityScenarioRule.getScenario().onActivity(activity -> {
+            activity.finishAffinity();  // Завершение активности, но не всего процесса
+        });
+    }
+
+    // Метод для перезапуска приложения
+    private void restartApp() {
+        // Перезапускаем активность
+        ActivityScenario.launch(AppActivity.class);
+
+        // Ждем, пока элемент не станет видимым после перезапуска
+        loginPage.waitForElement(R.id.login_text_input_layout, 5000);
+    }
+
 }

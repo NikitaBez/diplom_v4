@@ -44,4 +44,6 @@ public class AppManager {
             throw new AssertionError("Приложение не находится на странице входа или новостей.");
         }
     }
+
+
 }

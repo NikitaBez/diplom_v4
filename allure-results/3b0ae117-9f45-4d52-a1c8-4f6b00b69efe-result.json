@@ -1,9 +1,9 @@
 {
-    "name": "Authorization with valid login and password",
-    "start": 1723106907280,
-    "stop": 1723106921891,
+    "name": "Check full list of news list. ver 2 - hamburger",
+    "start": 1723120253332,
+    "stop": 1723120265893,
     "stage": "finished",
-    "description": "The user logs into the application using valid login and password data",
+    "description": "Display the full list of news by clicking on the hamburger",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
@@ -13,9 +13,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "81052f02-9291-46e5-ac8b-fe7339a5ab6d",
-    "historyId": "39314d16ac5ec13bae459fe1a57774c8",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.validLoginAndPassword",
+    "uuid": "3b0ae117-9f45-4d52-a1c8-4f6b00b69efe",
+    "historyId": "1cde689c6a54d3a04790670bc97c6cc5",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.NewsTest.checkFullListOfNewsPageHamburger",
     "labels": [
         {
             "name": "package",
@@ -23,15 +23,15 @@
         },
         {
             "name": "testClass",
-            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.NewsTest"
         },
         {
             "name": "testMethod",
-            "value": "validLoginAndPassword"
+            "value": "checkFullListOfNewsPageHamburger"
         },
         {
             "name": "suite",
-            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.NewsTest"
         },
         {
             "name": "host",
@@ -39,7 +39,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(297)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(954)"
         },
         {
             "name": "framework",

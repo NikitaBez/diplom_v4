@@ -1,0 +1,53 @@
+{
+    "name": "Entering an valid login and a invalid password",
+    "start": 1723120215084,
+    "stop": 1723120222084,
+    "stage": "finished",
+    "description": "Error logging into the application after entering an valid login and invalid password",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "b60f8c4c-9a01-420e-84ee-48a3f57a0792",
+    "historyId": "6a90f498fa46f7eb41c4c2efaadb315c",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.validLoginAndInvalidPassword",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.tests"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "validLoginAndInvalidPassword"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(944)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}
