@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests;
 import android.view.View;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import org.hamcrest.Matchers;
@@ -15,7 +14,7 @@ import org.junit.runner.RunWith;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.LoginSteps;
-import ru.iteco.fmhandroid.ui.pageobjects.NewsPage;
+import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.utils.Logged;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
@@ -34,7 +33,7 @@ import static org.hamcrest.Matchers.not;
 public class LoginTest {
 
     private LoginSteps loginSteps;
-    private NewsPage newsPage;
+    private MainPage mainPage;
     private Logged logged;
     private View decorView;
 
@@ -45,7 +44,7 @@ public class LoginTest {
     @Before
     public void setUp() {
         loginSteps = new LoginSteps();
-        newsPage = new NewsPage();
+        mainPage = new MainPage();
         logged = new Logged();
 
         mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
@@ -63,12 +62,12 @@ public class LoginTest {
         // Логинимся
         loginSteps.login(validCredentials);
         // Проверка открытия главной страницы с блоком новостей
-        newsPage.waitForElement(R.id.all_news_text_view, 5000);
-        newsPage.verifyNewsSection();
+        mainPage.waitForElement(R.id.all_news_text_view, 5000);
+        mainPage.verifyNewsSection();
         // Разлогинивание
-        newsPage.clickAuthorizationButton();
-        newsPage.waitForElement(android.R.id.title, 5000);
-        newsPage.clickLogOffButton();
+        mainPage.clickAuthorizationButton();
+        mainPage.waitForElement(android.R.id.title, 5000);
+        mainPage.clickLogOffButton();
     }
 
     @Test

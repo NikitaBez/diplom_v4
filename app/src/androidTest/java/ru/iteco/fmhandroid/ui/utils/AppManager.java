@@ -4,15 +4,14 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-import androidx.test.espresso.ViewAction;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.pageobjects.LoginPage;
-import ru.iteco.fmhandroid.ui.pageobjects.NewsPage;
+import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
 
 public class AppManager {
 
     private LoginPage loginPage = new LoginPage();
-    private NewsPage newsPage = new NewsPage();
+    private MainPage mainPage = new MainPage();
 
     public void waitForElement(int viewId, long millis) {
         onView(isRoot()).perform(WaitForViewAction.waitDisplayed((viewId), millis));
@@ -38,7 +37,7 @@ public class AppManager {
 
     public void checkAndLogoutIfNecessary() {
         if (isOnNewsPage()) {
-            newsPage.clickLogOffButton();
+            mainPage.clickLogOffButton();
         } else if (isOnLoginPage()) {
             // If already on LoginPage, we can proceed without any action
         } else {

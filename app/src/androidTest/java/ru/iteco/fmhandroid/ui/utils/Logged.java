@@ -1,14 +1,14 @@
 package ru.iteco.fmhandroid.ui.utils;
 
 import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.pageobjects.NewsPage;
+import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
 
 public class Logged {
-    private NewsPage newsPage = new NewsPage();
+    private MainPage mainPage = new MainPage();
 
     public boolean isLoggedIn() {
         try {
-            newsPage.waitForElement(R.id.all_news_text_view, 5000);
+            mainPage.waitForElement(R.id.all_news_text_view, 5000);
             return true;
         } catch (Exception e) {
             return false;
@@ -17,8 +17,8 @@ public class Logged {
 
     public void ensureLoggedOut() {
         if (isLoggedIn()) {
-            newsPage.clickAuthorizationButton();
-            newsPage.clickLogOffButton();
+            mainPage.clickAuthorizationButton();
+            mainPage.clickLogOffButton();
         }
     }
 }

@@ -11,7 +11,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.utils.WaitForViewAction;
 
-public class NewsPage {
+public class MainPage {
 
     //верификация открытия страницы новостей
     public void verifyNewsSection() {
