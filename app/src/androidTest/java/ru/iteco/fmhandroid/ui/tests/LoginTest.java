@@ -15,6 +15,7 @@ import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.LoginSteps;
 import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
+import ru.iteco.fmhandroid.ui.pageobjects.LoginPage;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.utils.Logged;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
@@ -34,6 +35,7 @@ public class LoginTest {
 
     private LoginSteps loginSteps;
     private MainPage mainPage;
+    private LoginPage loginPage;
     private Logged logged;
     private View decorView;
 
@@ -45,6 +47,7 @@ public class LoginTest {
     public void setUp() {
         loginSteps = new LoginSteps();
         mainPage = new MainPage();
+        loginPage = new LoginPage();
         logged = new Logged();
 
         mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
@@ -62,12 +65,10 @@ public class LoginTest {
         // Логинимся
         loginSteps.login(validCredentials);
         // Проверка открытия главной страницы с блоком новостей
-        mainPage.waitForElement(R.id.all_news_text_view, 5000);
-        mainPage.verifyNewsSection();
+        //mainPage.waitForElement(R.id.all_news_text_view, 5000);
+        mainPage.verifyMainPageWithShortNews();
         // Разлогинивание
-        mainPage.clickAuthorizationButton();
-        mainPage.waitForElement(android.R.id.title, 5000);
-        mainPage.clickLogOffButton();
+        mainPage.autoLogout();
     }
 
     @Test
@@ -134,5 +135,16 @@ public class LoginTest {
         onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
                 .inRoot(withDecorView(Matchers.not(decorView)))
                 .check(matches(isDisplayed()));
+    }
+
+    @Test
+    @DisplayName("Logout test")
+    @Description("Logout. Go to the authorization page")
+    public void LogoutTest(){
+        DataHelper validCredentials = DataHelper.validCredentials();
+        loginSteps.login(validCredentials);
+        mainPage.verifyMainPageWithShortNews();
+        mainPage.autoLogout();
+        loginPage.checkLoginPage();
     }
 }

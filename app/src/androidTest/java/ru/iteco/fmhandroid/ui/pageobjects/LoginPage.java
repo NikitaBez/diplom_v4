@@ -37,4 +37,8 @@ public class LoginPage {
         onView(isRoot()).perform(WaitForViewAction.waitDisplayed(viewId, timeout));
     }
 
+    public void checkLoginPage(){
+        onView(withId(R.id.enter_button))
+                .check(matches(isDisplayed()));
+    }
 }

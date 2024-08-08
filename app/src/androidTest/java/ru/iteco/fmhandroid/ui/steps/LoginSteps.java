@@ -25,4 +25,5 @@ public class LoginSteps {
         loginPage.enterPassword(dataHelper.getPassword());
         loginPage.clickLoginButton();
     }
+
 }
