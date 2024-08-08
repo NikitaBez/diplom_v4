@@ -1,0 +1,53 @@
+{
+    "name": "Empty login field and enter a valid password",
+    "start": 1723106814243,
+    "stop": 1723106837543,
+    "stage": "finished",
+    "description": "Error logging into the application after not entering login and entering valid password",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "71487169-85ce-4831-8943-aa3b718ce619",
+    "historyId": "acbe2b6f83f19881d9f6a9a98bff059c",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.emptyLoginAndValidPassword",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.tests"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "emptyLoginAndValidPassword"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(297)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}
