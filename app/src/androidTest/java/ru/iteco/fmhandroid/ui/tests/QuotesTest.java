@@ -1,5 +1,11 @@
 package ru.iteco.fmhandroid.ui.tests;
 
+import org.junit.Test;
+
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.data.DataHelper;
+
 import android.view.View;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -14,23 +20,19 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.LoginSteps;
 import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
 import ru.iteco.fmhandroid.ui.pageobjects.NewsPage;
+import ru.iteco.fmhandroid.ui.pageobjects.QuotesPage;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.utils.Logged;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.not;
-
-@LargeTest
-@RunWith(AllureAndroidJUnit4.class)
-
-public class NewsTest {
+public class QuotesTest {
     private LoginSteps loginSteps;
     private MainPage mainPage;
     private NewsPage newsPage;
     private Logged logged;
+    private QuotesPage quotesPage;
     private View decorView;
 
     @Rule
@@ -43,45 +45,28 @@ public class NewsTest {
         mainPage = new MainPage();
         newsPage = new NewsPage();
         logged = new Logged();
-
+        quotesPage = new QuotesPage();
         mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
 
         // Проверка состояния входа и выход из приложения, если вход выполнен
         logged.ensureLoggedOut();
     }
 
+
     @Test
-    @DisplayName("Check full list of news list. ver 1")
-    @Description("Display the full list of news by clicking on the ALL NEWS button")
-    public void checkFullListOfNewsPage() {
+    @DisplayName("Check the display of the quotes page")
+    @Description("You can display the full list of quotes by clicking on the Quotes button.")
+    public void checkDisplayingQuotes() {
         // Получаем валидные данные для логина
         DataHelper validCredentials = DataHelper.validCredentials();
         // Логинимся
         loginSteps.login(validCredentials);
         // Проверка открытия главной страницы с блоком новостей
         mainPage.verifyMainPageWithShortNews();
-        //Переход на страницу новостей
-        mainPage.clickAllNewsButton();
-        newsPage.checkNewsPage();
+        //Переход на страницу цитат
+        mainPage.clickQuotesButton();
+        quotesPage.checkQuotesPage();
         // Разлогинивание
         mainPage.autoLogout();
     }
-
-    @Test
-    @DisplayName("Check full list of news list. ver 2 - hamburger")
-    @Description("Display the full list of news by clicking on the hamburger")
-    public void checkFullListOfNewsPageHamburger() {
-        // Получаем валидные данные для логина
-        DataHelper validCredentials = DataHelper.validCredentials();
-        // Логинимся
-        loginSteps.login(validCredentials);
-        // Проверка открытия главной страницы с блоком новостей
-        mainPage.verifyMainPageWithShortNews();
-        //Переход на страницу новостей
-        mainPage.clickHamburgerAndNews();
-        newsPage.checkNewsPage();
-        // Разлогинивание
-        mainPage.autoLogout();
-    }
-
 }

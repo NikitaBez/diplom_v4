@@ -66,4 +66,19 @@ public class MainPage {
                 .perform(click());
     }
 
+    //нажатие на кнопку Гамбургер
+    public void clickHamburgerAndAbout() {
+        onView(withId(R.id.main_menu_image_button))
+                .check(matches(isDisplayed()))
+                .perform(click());
+        onView(allOf(withId(android.R.id.title), withText("About")))
+                .check(matches(isDisplayed()))
+                .perform(click());
+    }
+
+    public  void clickQuotesButton() {
+        onView(withId(R.id.our_mission_image_button))
+                .check(matches(isDisplayed()))
+                .perform(click());
+    }
 }
