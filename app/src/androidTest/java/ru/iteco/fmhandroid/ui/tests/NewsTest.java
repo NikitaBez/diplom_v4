@@ -64,7 +64,7 @@ public class NewsTest {
         mainPage.clickAllNewsButton();
         newsPage.checkNewsPage();
         // Разлогинивание
-        mainPage.autoLogout();
+//        mainPage.autoLogout();
     }
 
     @Test
@@ -81,7 +81,7 @@ public class NewsTest {
         mainPage.clickHamburgerAndNews();
         newsPage.checkNewsPage();
         // Разлогинивание
-        mainPage.autoLogout();
+//        mainPage.autoLogout();
     }
 
 }

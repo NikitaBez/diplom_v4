@@ -69,7 +69,7 @@ public class LoginTest {
         //mainPage.waitForElement(R.id.all_news_text_view, 5000);
         mainPage.verifyMainPageWithShortNews();
         // Разлогинивание
-        mainPage.autoLogout();
+        //mainPage.autoLogout();
     }
 
     @Test
@@ -154,28 +154,20 @@ public class LoginTest {
     @Description("Login with previously saved Login and Password")
     public void SavedLoginTest() {
         DataHelper validCredentials = DataHelper.validCredentials();
-
         // Вход с ранее сохраненными Логином и Паролем
         loginSteps.login(validCredentials);
-
         // Проверка, что основная страница с краткими новостями видима
         mainPage.verifyMainPageWithShortNews();
-
         // Закрытие приложения
         closeApp();
-
         // Перезапуск приложения
         restartApp();
-
         // Повторная проверка, что основная страница с краткими новостями снова видима
         mainPage.verifyMainPageWithShortNews();
     }
 
     // Метод для закрытия приложения
     private void closeApp() {
-        // Ждем, пока элемент не станет видимым (например, чтобы убедиться, что активность готова к закрытию)
-        loginPage.waitForElement(R.id.login_text_input_layout, 5000);
-
         // Завершаем активность
         mActivityScenarioRule.getScenario().onActivity(activity -> {
             activity.finishAffinity();  // Завершение активности, но не всего процесса
@@ -186,9 +178,7 @@ public class LoginTest {
     private void restartApp() {
         // Перезапускаем активность
         ActivityScenario.launch(AppActivity.class);
-
-        // Ждем, пока элемент не станет видимым после перезапуска
-        loginPage.waitForElement(R.id.login_text_input_layout, 5000);
+        loginPage.waitForElement(R.id.authorization_image_button, 5000);
     }
 
 }

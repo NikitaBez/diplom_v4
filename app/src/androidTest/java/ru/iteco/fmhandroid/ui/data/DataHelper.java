@@ -65,5 +65,7 @@ public class DataHelper {
 
     public static final String TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD = "Something went wrong. Try again later.";
     public static final String TOAST_MESSAGE_EMPTY_DATA = "Login and password cannot be empty";
+    public static final String VALUE_LINK_OF_PRIVACY_POLICY = "https://vhospice.org/#/privacy-policy/";
+    public static final String VALUE_LINK_OF_TERMS_OF_USE = "https://vhospice.org/#/terms-of-use";
 
 }

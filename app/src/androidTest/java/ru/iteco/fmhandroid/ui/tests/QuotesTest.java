@@ -67,6 +67,6 @@ public class QuotesTest {
         mainPage.clickQuotesButton();
         quotesPage.checkQuotesPage();
         // Разлогинивание
-        mainPage.autoLogout();
+//        mainPage.autoLogout();
     }
 }
