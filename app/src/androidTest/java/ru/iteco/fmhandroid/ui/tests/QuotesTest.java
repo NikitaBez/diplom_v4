@@ -66,7 +66,21 @@ public class QuotesTest {
         //Переход на страницу цитат
         mainPage.clickQuotesButton();
         quotesPage.checkQuotesPage();
-        // Разлогинивание
-//        mainPage.autoLogout();
+    }
+
+    @Test
+    @DisplayName("Unfolding Quote Cards")
+    @Description("A card with additional text of the quote will open")
+    public void openFullTextQuotes(){
+        DataHelper validCredentials = DataHelper.validCredentials();
+        // Логинимся
+        loginSteps.login(validCredentials);
+        // Проверка открытия главной страницы с блоком новостей
+        mainPage.verifyMainPageWithShortNews();
+        //Переход на страницу цитат
+        mainPage.clickQuotesButton();
+        quotesPage.checkQuotesPage();
+        quotesPage.fullCitations();
+
     }
 }
