@@ -1,5 +1,11 @@
 package ru.iteco.fmhandroid.ui.tests;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
 import android.view.View;
 
 import androidx.test.core.app.ActivityScenario;
@@ -12,23 +18,16 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.steps.LoginSteps;
-import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
-import ru.iteco.fmhandroid.ui.pageobjects.LoginPage;
-import ru.iteco.fmhandroid.ui.data.DataHelper;
-import ru.iteco.fmhandroid.ui.utils.Logged;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
-import static org.hamcrest.Matchers.not;
+import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.data.DataHelper;
+import ru.iteco.fmhandroid.ui.pageobjects.LoginPage;
+import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
+import ru.iteco.fmhandroid.ui.steps.LoginSteps;
+import ru.iteco.fmhandroid.ui.utils.Logged;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -53,89 +52,101 @@ public class LoginTest {
 
         mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
 
-        // Проверка состояния входа и выход из приложения, если вход выполнен
         logged.ensureLoggedOut();
+    }
+
+    private void loginAndVerify(String login, String password, String expectedMessage) {
+        DataHelper credentials = new DataHelper(login, password);
+        loginSteps.invalidCredentials(credentials);
+        onView(withText(expectedMessage))
+                .inRoot(withDecorView(Matchers.not(decorView)))
+                .check(matches(isDisplayed()));
     }
 
     @Test
     @DisplayName("Authorization with valid login and password")
     @Description("The user logs into the application using valid login and password data")
     public void validLoginAndPassword() {
-        // Получаем валидные данные для логина
         DataHelper validCredentials = DataHelper.validCredentials();
-        // Логинимся
         loginSteps.login(validCredentials);
-        // Проверка открытия главной страницы с блоком новостей
-        //mainPage.waitForElement(R.id.all_news_text_view, 5000);
         mainPage.verifyMainPageWithShortNews();
-        // Разлогинивание
-        //mainPage.autoLogout();
     }
 
     @Test
     @DisplayName("Entering an invalid login and a valid password")
     @Description("Error logging into the application after entering an invalid login and valid password")
     public void invalidLoginAndValidPassword() {
-        DataHelper invalidLogin = DataHelper.invalidLogin();
-        loginSteps.invalidCredentials(invalidLogin);
-        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
-                .inRoot(withDecorView(Matchers.not(decorView)))
-                .check(matches(isDisplayed()));
+//        DataHelper invalidLogin = DataHelper.invalidLogin();
+//        loginSteps.invalidCredentials(invalidLogin);
+//        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
+//                .inRoot(withDecorView(Matchers.not(decorView)))
+//                .check(matches(isDisplayed()));
+        loginAndVerify(DataHelper.INVALID_LOGIN, DataHelper.VALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
+
     }
 
     @Test
     @DisplayName("Entering an valid login and a invalid password")
     @Description("Error logging into the application after entering an valid login and invalid password")
     public void validLoginAndInvalidPassword() {
-        DataHelper invalidPassword = DataHelper.invalidPassword();
-        loginSteps.invalidCredentials(invalidPassword);
-        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
-                .inRoot(withDecorView(Matchers.not(decorView)))
-                .check(matches(isDisplayed()));
+//        DataHelper invalidPassword = DataHelper.invalidPassword();
+//        loginSteps.invalidCredentials(invalidPassword);
+//        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
+//                .inRoot(withDecorView(Matchers.not(decorView)))
+//                .check(matches(isDisplayed()));
+        loginAndVerify(DataHelper.VALID_LOGIN, DataHelper.INVALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
     }
 
     @Test
     @DisplayName("Entering an invalid login and a invalid password")
     @Description("Error logging into the application after entering an invalid login and invalid password")
     public void invalidLoginAndInvalidPassword() {
-        DataHelper invalidCredentials = DataHelper.invalidCredentials();
-        loginSteps.invalidCredentials(invalidCredentials);
-        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
-                .inRoot(withDecorView(Matchers.not(decorView)))
-                .check(matches(isDisplayed()));
+//        DataHelper invalidCredentials = DataHelper.invalidCredentials();
+//        loginSteps.invalidCredentials(invalidCredentials);
+//        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
+//                .inRoot(withDecorView(Matchers.not(decorView)))
+//                .check(matches(isDisplayed()));
+        loginAndVerify(DataHelper.INVALID_LOGIN, DataHelper.INVALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
+
     }
 
     @Test
     @DisplayName("Empty login field and enter a valid password")
     @Description("Error logging into the application after not entering login and entering valid password")
     public void emptyLoginAndValidPassword() {
-        DataHelper emptyLogin = DataHelper.emptyLogin();
-        loginSteps.invalidCredentials(emptyLogin);
-        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
-                .inRoot(withDecorView(Matchers.not(decorView)))
-                .check(matches(isDisplayed()));
+//        DataHelper emptyLogin = DataHelper.emptyLogin();
+//        loginSteps.invalidCredentials(emptyLogin);
+//        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
+//                .inRoot(withDecorView(Matchers.not(decorView)))
+//                .check(matches(isDisplayed()));
+        loginAndVerify("", DataHelper.VALID_PASSWORD, DataHelper.TOAST_MESSAGE_EMPTY_DATA);
+
     }
 
     @Test
     @DisplayName("Entering a valid password and the password field empty")
     @Description("Error logging into the application after entering valid login and not entering password")
     public void validLoginAndEmptyPassword() {
-        DataHelper emptyPassword = DataHelper.emptyPassword();
-        loginSteps.invalidCredentials(emptyPassword);
-        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
-                .inRoot(withDecorView(Matchers.not(decorView)))
-                .check(matches(isDisplayed()));
+//        DataHelper emptyPassword = DataHelper.emptyPassword();
+//        loginSteps.invalidCredentials(emptyPassword);
+//        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
+//                .inRoot(withDecorView(Matchers.not(decorView)))
+//                .check(matches(isDisplayed()));
+        loginAndVerify(DataHelper.VALID_LOGIN, "", DataHelper.TOAST_MESSAGE_EMPTY_DATA);
+
     }
 
     @Test
     @DisplayName("Empty login and password fields")
     @Description("Error logging into the application after not entering login and password")
     public void EmptyLoginAndEmptyPassword() {
-        DataHelper emptyCredentials = DataHelper.emptyCredentials();
-        loginSteps.invalidCredentials(emptyCredentials);
-        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
-                .inRoot(withDecorView(Matchers.not(decorView)))
-                .check(matches(isDisplayed()));
+//        DataHelper emptyCredentials = DataHelper.emptyCredentials();
+//        loginSteps.invalidCredentials(emptyCredentials);
+//        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
+//                .inRoot(withDecorView(Matchers.not(decorView)))
+//                .check(matches(isDisplayed()));
+        loginAndVerify("", "", DataHelper.TOAST_MESSAGE_EMPTY_DATA);
+
     }
 
     @Test
@@ -154,29 +165,21 @@ public class LoginTest {
     @Description("Login with previously saved Login and Password")
     public void SavedLoginTest() {
         DataHelper validCredentials = DataHelper.validCredentials();
-        // Вход с ранее сохраненными Логином и Паролем
         loginSteps.login(validCredentials);
-        // Проверка, что основная страница с краткими новостями видима
         mainPage.verifyMainPageWithShortNews();
-        // Закрытие приложения
         closeApp();
-        // Перезапуск приложения
         restartApp();
-        // Повторная проверка, что основная страница с краткими новостями снова видима
         mainPage.verifyMainPageWithShortNews();
     }
 
     // Метод для закрытия приложения
     private void closeApp() {
-        // Завершаем активность
         mActivityScenarioRule.getScenario().onActivity(activity -> {
-            activity.finishAffinity();  // Завершение активности, но не всего процесса
+            activity.finishAffinity();
         });
     }
 
-    // Метод для перезапуска приложения
     private void restartApp() {
-        // Перезапускаем активность
         ActivityScenario.launch(AppActivity.class);
         loginPage.waitForElement(R.id.authorization_image_button, 5000);
     }

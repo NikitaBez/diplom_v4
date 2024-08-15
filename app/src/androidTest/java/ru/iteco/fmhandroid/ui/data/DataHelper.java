@@ -8,6 +8,9 @@ public class DataHelper {
     public static final String VALID_LOGIN = "login2";
     public static final String VALID_PASSWORD = "password2";
 
+    public static final String INVALID_LOGIN = generateRandomString(10);
+    public static final String INVALID_PASSWORD = generateRandomString(10);
+
     private String login;
     private String password;
 
@@ -40,15 +43,15 @@ public class DataHelper {
     }
 
     public static DataHelper invalidLogin() {
-        return new DataHelper(generateRandomString(10), VALID_PASSWORD);
+        return new DataHelper(INVALID_LOGIN, VALID_PASSWORD);
     }
 
     public static DataHelper invalidPassword() {
-        return new DataHelper(VALID_LOGIN, generateRandomString(10));
+        return new DataHelper(VALID_LOGIN, INVALID_PASSWORD);
     }
 
     public static DataHelper invalidCredentials() {
-        return new DataHelper(generateRandomString(10), generateRandomString(10));
+        return new DataHelper(INVALID_LOGIN, INVALID_PASSWORD);
     }
 
     public static DataHelper emptyLogin(){
