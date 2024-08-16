@@ -76,11 +76,6 @@ public class LoginTest {
     @DisplayName("Entering an invalid login and a valid password")
     @Description("Error logging into the application after entering an invalid login and valid password")
     public void invalidLoginAndValidPassword() {
-//        DataHelper invalidLogin = DataHelper.invalidLogin();
-//        loginSteps.invalidCredentials(invalidLogin);
-//        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
-//                .inRoot(withDecorView(Matchers.not(decorView)))
-//                .check(matches(isDisplayed()));
         loginAndVerify(DataHelper.INVALID_LOGIN, DataHelper.VALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
 
     }
@@ -89,11 +84,6 @@ public class LoginTest {
     @DisplayName("Entering an valid login and a invalid password")
     @Description("Error logging into the application after entering an valid login and invalid password")
     public void validLoginAndInvalidPassword() {
-//        DataHelper invalidPassword = DataHelper.invalidPassword();
-//        loginSteps.invalidCredentials(invalidPassword);
-//        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
-//                .inRoot(withDecorView(Matchers.not(decorView)))
-//                .check(matches(isDisplayed()));
         loginAndVerify(DataHelper.VALID_LOGIN, DataHelper.INVALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
     }
 
@@ -101,11 +91,6 @@ public class LoginTest {
     @DisplayName("Entering an invalid login and a invalid password")
     @Description("Error logging into the application after entering an invalid login and invalid password")
     public void invalidLoginAndInvalidPassword() {
-//        DataHelper invalidCredentials = DataHelper.invalidCredentials();
-//        loginSteps.invalidCredentials(invalidCredentials);
-//        onView(withText(DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD))
-//                .inRoot(withDecorView(Matchers.not(decorView)))
-//                .check(matches(isDisplayed()));
         loginAndVerify(DataHelper.INVALID_LOGIN, DataHelper.INVALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
 
     }
@@ -114,11 +99,6 @@ public class LoginTest {
     @DisplayName("Empty login field and enter a valid password")
     @Description("Error logging into the application after not entering login and entering valid password")
     public void emptyLoginAndValidPassword() {
-//        DataHelper emptyLogin = DataHelper.emptyLogin();
-//        loginSteps.invalidCredentials(emptyLogin);
-//        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
-//                .inRoot(withDecorView(Matchers.not(decorView)))
-//                .check(matches(isDisplayed()));
         loginAndVerify("", DataHelper.VALID_PASSWORD, DataHelper.TOAST_MESSAGE_EMPTY_DATA);
 
     }
@@ -127,11 +107,6 @@ public class LoginTest {
     @DisplayName("Entering a valid password and the password field empty")
     @Description("Error logging into the application after entering valid login and not entering password")
     public void validLoginAndEmptyPassword() {
-//        DataHelper emptyPassword = DataHelper.emptyPassword();
-//        loginSteps.invalidCredentials(emptyPassword);
-//        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
-//                .inRoot(withDecorView(Matchers.not(decorView)))
-//                .check(matches(isDisplayed()));
         loginAndVerify(DataHelper.VALID_LOGIN, "", DataHelper.TOAST_MESSAGE_EMPTY_DATA);
 
     }
@@ -140,11 +115,6 @@ public class LoginTest {
     @DisplayName("Empty login and password fields")
     @Description("Error logging into the application after not entering login and password")
     public void EmptyLoginAndEmptyPassword() {
-//        DataHelper emptyCredentials = DataHelper.emptyCredentials();
-//        loginSteps.invalidCredentials(emptyCredentials);
-//        onView(withText(DataHelper.TOAST_MESSAGE_EMPTY_DATA))
-//                .inRoot(withDecorView(Matchers.not(decorView)))
-//                .check(matches(isDisplayed()));
         loginAndVerify("", "", DataHelper.TOAST_MESSAGE_EMPTY_DATA);
 
     }
@@ -172,7 +142,6 @@ public class LoginTest {
         mainPage.verifyMainPageWithShortNews();
     }
 
-    // Метод для закрытия приложения
     private void closeApp() {
         mActivityScenarioRule.getScenario().onActivity(activity -> {
             activity.finishAffinity();

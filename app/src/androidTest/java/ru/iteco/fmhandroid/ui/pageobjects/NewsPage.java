@@ -5,6 +5,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
@@ -13,11 +14,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.childAtPosition;
+import static ru.iteco.fmhandroid.ui.utils.AppManager.clickChildElementById;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.getCurrentDate;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.getCurrentTime;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.inputText;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.waitElement;
+import static ru.iteco.fmhandroid.ui.utils.AppManager.getItemCountFromRecyclerView;
 
 import androidx.test.espresso.ViewInteraction;
 
@@ -142,8 +148,50 @@ public class NewsPage {
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()));
         textView.check(matches(withText(title)));
-
     }
+
+    public void warningNewsDeletion() {
+        waitElement((R.id.news_list_recycler_view), 9000);
+        onView(withId(R.id.news_list_recycler_view))
+                .perform(actionOnItemAtPosition(0, clickChildElementById(R.id.delete_news_item_image_view)));
+        onView(withText(R.string.irrevocable_deletion))
+                .check(matches(withText("Are you sure you want to permanently delete the document? These changes cannot be reversed in the future.")));
+    }
+
+    public void deleteNews() {
+        int countBeforeDelete = getItemCountFromRecyclerView();
+        warningNewsDeletion();
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(android.R.id.button1), withText("OK"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                3)));
+        materialButton2.perform(scrollTo(), click());
+        waitElement((R.id.news_list_recycler_view), 5000);
+        int countAfterDelete = getItemCountFromRecyclerView();
+        assertNotEquals(countBeforeDelete, countAfterDelete);
+    }
+
+//    public void undoNewsDeletion() {
+//        int countBeforeCancel = getItemCountFromRecyclerView();
+//        warningNewsDeletion();
+//
+//        ViewInteraction materialButton3 = onView(
+//                allOf(withId(android.R.id.button2), withText("Cancel"),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withClassName(is("android.widget.ScrollView")),
+//                                        0),
+//                                3)));
+//        materialButton3.perform(scrollTo(), click());
+//        waitElement((R.id.news_list_recycler_view), 5000);
+//        int countAfterCancel = getItemCountFromRecyclerView();
+//        assertEquals(countBeforeCancel, countAfterCancel);
+//    }
+
 }
 
 

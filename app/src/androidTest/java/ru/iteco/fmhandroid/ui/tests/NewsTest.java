@@ -96,7 +96,39 @@ public class NewsTest {
         newsPage.checkNewsPage();
         newsPage.clickEditButton();
         newsPage.createNews();
-
     }
 
+    @Test
+    @DisplayName("Удаление новости")
+    @Description("Первая новость удалится и остальные карточки сместятся вверх")
+    public void deleteNews() {
+        // Получаем валидные данные для логина
+        DataHelper validCredentials = DataHelper.validCredentials();
+        // Логинимся
+        loginSteps.login(validCredentials);
+        // Проверка открытия главной страницы с блоком новостей
+        mainPage.verifyMainPageWithShortNews();
+        //Переход на страницу новостей
+        mainPage.clickHamburgerAndNews();
+        newsPage.checkNewsPage();
+        newsPage.clickEditButton();
+        newsPage.deleteNews();
+    }
+
+//    @Test
+//    @DisplayName("Отмена Удаления новости")
+//    @Description("Нажать ОТМЕНА в окне подтверждения удаления новости")
+//    public void undoNewsDeletion() {
+//        // Получаем валидные данные для логина
+//        DataHelper validCredentials = DataHelper.validCredentials();
+//        // Логинимся
+//        loginSteps.login(validCredentials);
+//        // Проверка открытия главной страницы с блоком новостей
+//        mainPage.verifyMainPageWithShortNews();
+//        //Переход на страницу новостей
+//        mainPage.clickHamburgerAndNews();
+//        newsPage.checkNewsPage();
+//        newsPage.clickEditButton();
+//        newsPage.undoNewsDeletion();
+//    }
 }
