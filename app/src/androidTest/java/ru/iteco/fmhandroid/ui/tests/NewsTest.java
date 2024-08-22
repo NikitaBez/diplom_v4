@@ -47,51 +47,35 @@ public class NewsTest {
         logged.ensureLoggedOut();
     }
 
+    private void loginAndNavigateToNewsPage() {
+        DataHelper validCredentials = DataHelper.validCredentials();
+        loginSteps.login(validCredentials);
+        mainPage.verifyMainPageWithShortNews();
+    }
+
     @Test
     @DisplayName("Check full list of news list. ver 1")
     @Description("Display the full list of news by clicking on the ALL NEWS button")
     public void checkFullListOfNewsPage() {
-        // Получаем валидные данные для логина
-        DataHelper validCredentials = DataHelper.validCredentials();
-        // Логинимся
-        loginSteps.login(validCredentials);
-        // Проверка открытия главной страницы с блоком новостей
-        mainPage.verifyMainPageWithShortNews();
-        //Переход на страницу новостей
+        loginAndNavigateToNewsPage();
         mainPage.clickAllNewsButton();
         newsPage.checkNewsPage();
-        // Разлогинивание
-//        mainPage.autoLogout();
     }
 
     @Test
     @DisplayName("Check full list of news list. ver 2 - hamburger")
     @Description("Display the full list of news by clicking on the hamburger")
     public void checkFullListOfNewsPageHamburger() {
-        // Получаем валидные данные для логина
-        DataHelper validCredentials = DataHelper.validCredentials();
-        // Логинимся
-        loginSteps.login(validCredentials);
-        // Проверка открытия главной страницы с блоком новостей
-        mainPage.verifyMainPageWithShortNews();
-        //Переход на страницу новостей
+        loginAndNavigateToNewsPage();
         mainPage.clickHamburgerAndNews();
         newsPage.checkNewsPage();
-        // Разлогинивание
-//        mainPage.autoLogout();
     }
 
     @Test
     @DisplayName("Создание новой новости")
     @Description("В панели управления (Control Panel) создается новость с типом Объявление")
     public void createNewNews() {
-        // Получаем валидные данные для логина
-        DataHelper validCredentials = DataHelper.validCredentials();
-        // Логинимся
-        loginSteps.login(validCredentials);
-        // Проверка открытия главной страницы с блоком новостей
-        mainPage.verifyMainPageWithShortNews();
-        //Переход на страницу новостей
+        loginAndNavigateToNewsPage();
         mainPage.clickHamburgerAndNews();
         newsPage.checkNewsPage();
         newsPage.clickEditButton();
@@ -102,33 +86,25 @@ public class NewsTest {
     @DisplayName("Удаление новости")
     @Description("Первая новость удалится и остальные карточки сместятся вверх")
     public void deleteNews() {
-        // Получаем валидные данные для логина
-        DataHelper validCredentials = DataHelper.validCredentials();
-        // Логинимся
-        loginSteps.login(validCredentials);
-        // Проверка открытия главной страницы с блоком новостей
-        mainPage.verifyMainPageWithShortNews();
-        //Переход на страницу новостей
+        loginAndNavigateToNewsPage();
+        mainPage.clickHamburgerAndNews();
+        newsPage.checkNewsPage();
+        newsPage.clickEditButton();
+        newsPage.createNews();
         mainPage.clickHamburgerAndNews();
         newsPage.checkNewsPage();
         newsPage.clickEditButton();
         newsPage.deleteNews();
     }
 
-//    @Test
-//    @DisplayName("Отмена Удаления новости")
-//    @Description("Нажать ОТМЕНА в окне подтверждения удаления новости")
-//    public void undoNewsDeletion() {
-//        // Получаем валидные данные для логина
-//        DataHelper validCredentials = DataHelper.validCredentials();
-//        // Логинимся
-//        loginSteps.login(validCredentials);
-//        // Проверка открытия главной страницы с блоком новостей
-//        mainPage.verifyMainPageWithShortNews();
-//        //Переход на страницу новостей
-//        mainPage.clickHamburgerAndNews();
-//        newsPage.checkNewsPage();
-//        newsPage.clickEditButton();
-//        newsPage.undoNewsDeletion();
-//    }
+    @Test
+    @DisplayName("Отмена Удаления новости")
+    @Description("Нажать ОТМЕНА в окне подтверждения удаления новости")
+    public void undoNewsDeletion() {
+        loginAndNavigateToNewsPage();
+        mainPage.clickHamburgerAndNews();
+        newsPage.checkNewsPage();
+        newsPage.clickEditButton();
+        newsPage.undoNewsDeletion();
+    }
 }

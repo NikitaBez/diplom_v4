@@ -95,15 +95,44 @@ public class AppManager {
                 .perform(replaceText(inputText), closeSoftKeyboard());
     }
 
+//    public static int getItemCountFromRecyclerView() {
+//        AtomicInteger count = new AtomicInteger();
+//
+//        onView(withId(R.id.news_list_recycler_view))
+////                .check(matches(isDisplayed()))
+//                .perform(new RecyclerViewItemCountAssertion(count));
+//
+//        return count.get();
+//    }
+
+
     public static int getItemCountFromRecyclerView() {
-        AtomicInteger count = new AtomicInteger();
+        final AtomicInteger itemCount = new AtomicInteger(0);
 
+        // Используем onView чтобы получить доступ к RecyclerView
         onView(withId(R.id.news_list_recycler_view))
-                .check(matches(isDisplayed()))
-                .perform(new RecyclerViewItemCountAssertion(count));
+                .check(matches(isDisplayed()))  // Проверка, что RecyclerView отображается
+                .check((view, noViewFoundException) -> {
+                    // Проверяем, что не было исключения
+                    if (noViewFoundException != null) {
+                        throw noViewFoundException;
+                    }
 
-        return count.get();
+                    // Получаем доступ к адаптеру RecyclerView
+                    RecyclerView recyclerView = (RecyclerView) view;
+                    RecyclerView.Adapter adapter = recyclerView.getAdapter();
+
+                    // Если адаптер существует, получаем количество элементов
+                    if (adapter != null) {
+                        itemCount.set(adapter.getItemCount());
+                    } else {
+                        throw new IllegalStateException("RecyclerView Adapter is null");
+                    }
+                });
+
+        return itemCount.get();
     }
+
 
     private static class RecyclerViewItemCountAssertion implements ViewAction {
         private final AtomicInteger count;
