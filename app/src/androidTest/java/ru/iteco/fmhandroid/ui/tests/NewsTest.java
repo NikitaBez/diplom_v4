@@ -40,10 +40,7 @@ public class NewsTest {
         mainPage = new MainPage();
         newsPage = new NewsPage();
         logged = new Logged();
-
         mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
-
-        // Проверка состояния входа и выход из приложения, если вход выполнен
         logged.ensureLoggedOut();
     }
 
@@ -53,22 +50,30 @@ public class NewsTest {
         mainPage.verifyMainPageWithShortNews();
     }
 
-    @Test
-    @DisplayName("Check full list of news list. ver 1")
-    @Description("Display the full list of news by clicking on the ALL NEWS button")
-    public void checkFullListOfNewsPage() {
-        loginAndNavigateToNewsPage();
+    private void navigateToFullNewsList() {
+        mainPage.clickHamburgerAndNews();
+        newsPage.checkNewsPage();
+    }
+
+    private void navigateToAllNewsButton() {
         mainPage.clickAllNewsButton();
         newsPage.checkNewsPage();
     }
 
     @Test
-    @DisplayName("Check full list of news list. ver 2 - hamburger")
-    @Description("Display the full list of news by clicking on the hamburger")
+    @DisplayName("Проверка полного списка новостей через кнопку ALL NEWS")
+    @Description("Отображение полного списка новостей при нажатии на кнопку ALL NEWS")
+    public void checkFullListOfNewsPage() {
+        loginAndNavigateToNewsPage();
+        navigateToAllNewsButton();
+    }
+
+    @Test
+    @DisplayName("Проверка полного списка новостей через гамбургер-меню")
+    @Description("Отображение полного списка новостей при нажатии на гамбургер-меню")
     public void checkFullListOfNewsPageHamburger() {
         loginAndNavigateToNewsPage();
-        mainPage.clickHamburgerAndNews();
-        newsPage.checkNewsPage();
+        navigateToFullNewsList();
     }
 
     @Test
@@ -76,8 +81,7 @@ public class NewsTest {
     @Description("В панели управления (Control Panel) создается новость с типом Объявление")
     public void createNewNews() {
         loginAndNavigateToNewsPage();
-        mainPage.clickHamburgerAndNews();
-        newsPage.checkNewsPage();
+        navigateToFullNewsList();
         newsPage.clickEditButton();
         newsPage.createNews();
     }
@@ -87,12 +91,10 @@ public class NewsTest {
     @Description("Первая новость удалится и остальные карточки сместятся вверх")
     public void deleteNews() {
         loginAndNavigateToNewsPage();
-        mainPage.clickHamburgerAndNews();
-        newsPage.checkNewsPage();
+        navigateToFullNewsList();
         newsPage.clickEditButton();
         newsPage.createNews();
-        mainPage.clickHamburgerAndNews();
-        newsPage.checkNewsPage();
+        navigateToFullNewsList();
         newsPage.clickEditButton();
         newsPage.deleteNews();
     }
@@ -102,9 +104,9 @@ public class NewsTest {
     @Description("Нажать ОТМЕНА в окне подтверждения удаления новости")
     public void undoNewsDeletion() {
         loginAndNavigateToNewsPage();
-        mainPage.clickHamburgerAndNews();
-        newsPage.checkNewsPage();
+        navigateToFullNewsList();
         newsPage.clickEditButton();
+        newsPage.createNews();
         newsPage.undoNewsDeletion();
     }
 }

@@ -29,7 +29,6 @@ public class AboutTest {
     private Logged logged;
     private QuotesPage quotesPage;
     private AboutPage aboutPage;
-    private View decorView;
     private DataHelper validCredentials;
 
     @Rule
@@ -46,7 +45,6 @@ public class AboutTest {
         aboutPage = new AboutPage();
         validCredentials = DataHelper.validCredentials();
         Intents.init();
-        mActivityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
         logged.ensureLoggedOut();
     }
 
@@ -65,8 +63,8 @@ public class AboutTest {
     }
 
     @Test
-    @DisplayName("Displaying the application version")
-    @Description("You can view the application version")
+    @DisplayName("Отображение версии приложения")
+    @Description("Вы можете просмотреть версию приложения")
     public void checkAppVersion() {
         loginAndVerifyHomePage();
         navigateToAboutPage();
@@ -75,8 +73,8 @@ public class AboutTest {
     }
 
     @Test
-    @DisplayName("Link to privacy policy")
-    @Description("A web page with the privacy policy will open")
+    @DisplayName("Ссылка на политику конфиденциальности")
+    @Description("Откроется веб-страница с политикой конфиденциальности")
     public void checkPrivacyPolicyLink() {
         loginAndVerifyHomePage();
         navigateToAboutPage();
@@ -85,8 +83,8 @@ public class AboutTest {
     }
 
     @Test
-    @DisplayName("Link to terms of use")
-    @Description("A web page with the terms of use will open")
+    @DisplayName("Ссылка на условия использования")
+    @Description("Откроется веб-страница с условиями использования")
     public void checkTermsOfUseLink() {
         loginAndVerifyHomePage();
         navigateToAboutPage();
@@ -95,8 +93,8 @@ public class AboutTest {
     }
 
     @Test
-    @DisplayName("Copyright Check")
-    @Description("Displaying the copyright owner, checking the operation of the \"Return\" button")
+    @DisplayName("Проверка авторских прав")
+    @Description("Отображение владельца авторских прав, проверка работы кнопки \"Назад\"")
     public void copyrightCheck() {
         loginAndVerifyHomePage();
         navigateToAboutPage();

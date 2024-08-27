@@ -21,6 +21,7 @@ import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.fail;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.childAtPosition;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.clickChildElementById;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.getCurrentDate;
@@ -30,6 +31,7 @@ import static ru.iteco.fmhandroid.ui.utils.AppManager.waitElement;
 import static ru.iteco.fmhandroid.ui.utils.AppManager.getItemCountFromRecyclerView;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.ViewInteraction;
 
 import ru.iteco.fmhandroid.R;
@@ -39,28 +41,25 @@ import ru.iteco.fmhandroid.ui.utils.AppManager;
 public class NewsPage {
 
     private AppManager appManager = new AppManager();
+    private String title;
 
-    //верификация открытия страницы новостей
     public void checkNewsPage() {
         onView(withId(R.id.all_news_cards_block_constraint_layout))
                 .check(matches(isDisplayed()));
     }
 
-    //клик на кнопку редактировать
     public void clickEditButton() {
         onView(withId(R.id.edit_news_material_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    //клик на кнопку добавить новость
     public void clickCreateNewsButton() {
         onView(withId(R.id.add_news_image_view))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    //клик на выпадающую категорию
     public void clickOnDropdownCategory() {
         ViewInteraction checkableImageButton = onView(
                 allOf(withId(com.google.android.material.R.id.text_input_end_icon), withContentDescription("Show dropdown menu"),
@@ -73,20 +72,17 @@ public class NewsPage {
         checkableImageButton.perform(click());
     }
 
-    //ввод заголовка
     public void inputTitle(String title) {
         ViewInteraction textInputEditText = onView(withId(R.id.news_item_title_text_input_edit_text));
         textInputEditText.perform(click());
         textInputEditText.perform(replaceText(title));
     }
 
-    //ввод текущей даты
     public void inputCurrentDate(String date) {
         ViewInteraction textInputEditText = onView(allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
         textInputEditText.perform(replaceText(date));
     }
 
-    //ввод текущего времени
     public void inputCurrentTime() {
         ViewInteraction textInputEditText4 = onView(
                 allOf(withId(R.id.news_item_publish_time_text_input_edit_text),
@@ -108,20 +104,15 @@ public class NewsPage {
         materialButton5.perform(scrollTo(), click());
     }
 
-    //клик на кнопку добавить новость
     public void clickSaveButton() {
         onView(withId(R.id.save_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    //меню создание новости
     public void createNews() {
         String date = getCurrentDate();
-        String time = getCurrentTime();
-//        String category = "Объявление";
-//        String title = DataHelper.generateRandomString(10);
-        String title = DataHelper.NEW_NEWS_TITLE;
+        title = DataHelper.generateRandomString(10);
         String description = DataHelper.NEW_NEWS_DESCRIPTION;
         clickCreateNewsButton();
         clickOnDropdownCategory();
@@ -158,33 +149,18 @@ public class NewsPage {
         textView.check(matches(withText(title)));
     }
 
-
-//        public void warningNewsDeletion1() {
-//        waitElement((R.id.news_list_recycler_view), 9000);
-//        onView(withId(R.id.news_list_recycler_view))
-//                .perform(actionOnItemAtPosition(0, clickChildElementById(R.id.delete_news_item_image_view)));
-//        onView(withText(R.string.irrevocable_deletion))
-//                .check(matches(withText("Are you sure you want to permanently delete the document? These changes cannot be reversed in the future.")));
-//    }
-
     public void warningNewsDeletion() {
-        String title = DataHelper.NEW_NEWS_TITLE;
         waitElement(R.id.news_list_recycler_view, 9000);
 
-        // Находим карточку новости по заголовку
         onView(allOf(withId(R.id.news_item_material_card_view), hasDescendant(withText(title))))
                 .check(matches(isDisplayed()))
                 .perform(clickChildElementById(R.id.delete_news_item_image_view));
 
-        // Проверяем, что отображается диалог подтверждения удаления
         onView(withText(R.string.irrevocable_deletion))
                 .check(matches(withText("Are you sure you want to permanently delete the document? These changes cannot be reversed in the future.")));
     }
 
     public void deleteNews() {
-        String title = DataHelper.NEW_NEWS_TITLE;
-
-
         warningNewsDeletion();
         ViewInteraction materialButton2 = onView(
                 allOf(withId(android.R.id.button1), withText("OK"),
@@ -194,56 +170,34 @@ public class NewsPage {
                                         0),
                                 3)));
         materialButton2.perform(scrollTo(), click());
-        waitElement((R.id.news_list_recycler_view), 10000);
+        waitElement((R.id.news_list_recycler_view), 5000);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-//        onView(allOf(withText(title), isDisplayed())).check(doesNotExist());
-        onView(allOf(withId(R.id.news_item_material_card_view), hasDescendant(withText(title))))
-                .check(doesNotExist());
-
+        onView(allOf(withText(title), isDisplayed())).check(doesNotExist());
     }
 
-//    public void deleteNews() {
-//        String title = DataHelper.NEW_NEWS_TITLE;
-//
-//        // Ищем новость и запускаем процесс удаления
-//        warningNewsDeletion();
-//
-//        // Подтверждаем удаление
-//        ViewInteraction materialButton2 = onView(
-//                allOf(withId(android.R.id.button1), withText("OK"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withClassName(is("android.widget.ScrollView")),
-//                                        0),
-//                                3)));
-//        materialButton2.perform(scrollTo(), click());
-//
-//        // Ждем завершения удаления
-//        waitElement(R.id.news_list_recycler_view, 5000);
-//
-//        // Проверяем, что новость с указанным заголовком больше не существует в списке
-//        onView(allOf(withId(R.id.news_item_title_text_view), withText(title)))
-//                .check(doesNotExist());
-//    }
 
+    public void undoNewsDeletion() {
+        int countBeforeCancel = getItemCountFromRecyclerView();
+        warningNewsDeletion();
 
-public void undoNewsDeletion() {
-    int countBeforeCancel = getItemCountFromRecyclerView();
-    warningNewsDeletion();
-
-    ViewInteraction materialButton3 =
-            onView(withId(android.R.id.button2)).check(matches(isClickable()));
-    allOf(withId(android.R.id.button2), withText("Cancel"),
-            childAtPosition(
-                    childAtPosition(
-                            withClassName(is("android.widget.ScrollView")),
-                            0),
-                    3));
-    materialButton3.perform(scrollTo(), click());
-    waitElement((R.id.news_list_recycler_view), 5000);
-    int countAfterCancel = getItemCountFromRecyclerView();
-    assertEquals(countBeforeCancel, countAfterCancel);
-}
+        ViewInteraction materialButton3 =
+                onView(withId(android.R.id.button2)).check(matches(isClickable()));
+        allOf(withId(android.R.id.button2), withText("Cancel"),
+                childAtPosition(
+                        childAtPosition(
+                                withClassName(is("android.widget.ScrollView")),
+                                0),
+                        3));
+        materialButton3.perform(scrollTo(), click());
+        waitElement((R.id.news_list_recycler_view), 5000);
+        int countAfterCancel = getItemCountFromRecyclerView();
+        assertEquals(countBeforeCancel, countAfterCancel);
+    }
 
 }
 

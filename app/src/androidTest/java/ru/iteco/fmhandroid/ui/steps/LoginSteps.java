@@ -10,18 +10,18 @@ public class LoginSteps {
     private LoginPage loginPage = new LoginPage();
 
     public void login(DataHelper dataHelper) {
-        loginPage.waitForElement(R.id.login_text_input_layout, 5000); // Ожидание появления поля логина
+        loginPage.waitForElement(R.id.login_text_input_layout, 5000);
         loginPage.enterLogin(dataHelper.getLogin());
-        loginPage.waitForElement(R.id.password_text_input_layout, 5000); // Ожидание появления поля пароля
+        loginPage.waitForElement(R.id.password_text_input_layout, 5000);
         loginPage.enterPassword(dataHelper.getPassword());
         loginPage.clickLoginButton();
         loginPage.waitForElement(R.id.authorization_image_button, 5000);
     }
 
     public void invalidCredentials (DataHelper dataHelper) {
-        loginPage.waitForElement(R.id.login_text_input_layout, 5000); // Ожидание появления поля логина
+        loginPage.waitForElement(R.id.login_text_input_layout, 5000);
         loginPage.enterLogin(dataHelper.getLogin());
-        loginPage.waitForElement(R.id.password_text_input_layout, 5000); // Ожидание появления поля пароля
+        loginPage.waitForElement(R.id.password_text_input_layout, 5000);
         loginPage.enterPassword(dataHelper.getPassword());
         loginPage.clickLoginButton();
     }

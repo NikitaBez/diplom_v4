@@ -22,7 +22,6 @@ import ru.iteco.fmhandroid.ui.utils.WaitForViewAction;
 
 public class AboutPage {
 
-    //верификация открытия страницы About
     public void checkVersionOfApp() {
         onView(withId(R.id.about_version_value_text_view))
                 .check(matches(isDisplayed()));

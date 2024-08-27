@@ -14,11 +14,10 @@ import static org.hamcrest.Matchers.is;
 import androidx.test.espresso.ViewInteraction;
 
 import ru.iteco.fmhandroid.ui.utils.AppManager;
-
 import ru.iteco.fmhandroid.R;
 
 public class QuotesPage {
-    //верификация открытия страницы цитат
+
     public void checkQuotesPage() {
         onView(withId(R.id.our_mission_title_text_view))
                 .check(matches(isDisplayed()));
@@ -26,7 +25,7 @@ public class QuotesPage {
 
     public void fullCitations() {
         String text = "Все сотрудники хосписа - это адвокаты пациента, его прав и потребностей. Поиск путей решения различных задач - это и есть хосписный индивидуальный подход к паллиативной помощи.";
-//        String text = "к путей решения различных задач - это и есть хосписный индивидуальный подход к паллиативной помощи.";
+
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.our_mission_item_list_recycler_view),
                         AppManager.childAtPosition(

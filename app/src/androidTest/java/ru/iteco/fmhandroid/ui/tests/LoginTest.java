@@ -63,88 +63,86 @@ public class LoginTest {
                 .check(matches(isDisplayed()));
     }
 
-    @Test
-    @DisplayName("Authorization with valid login and password")
-    @Description("The user logs into the application using valid login and password data")
-    public void validLoginAndPassword() {
+    private void loginWithValidCredentialsAndVerify() {
         DataHelper validCredentials = DataHelper.validCredentials();
         loginSteps.login(validCredentials);
         mainPage.verifyMainPageWithShortNews();
     }
 
     @Test
-    @DisplayName("Entering an invalid login and a valid password")
-    @Description("Error logging into the application after entering an invalid login and valid password")
+    @DisplayName("Авторизация с действительным логином и паролем")
+    @Description("Пользователь входит в приложение, используя действительные данные логина и пароля")
+    public void validLoginAndPassword() {
+        loginWithValidCredentialsAndVerify();
+    }
+
+    @Test
+    @DisplayName("Ввод недействительного логина и действительного пароля")
+    @Description("Ошибка входа в приложение после ввода действительного пароля и недействительного логина")
     public void invalidLoginAndValidPassword() {
         loginAndVerify(DataHelper.INVALID_LOGIN, DataHelper.VALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
 
     }
 
     @Test
-    @DisplayName("Entering an valid login and a invalid password")
-    @Description("Error logging into the application after entering an valid login and invalid password")
+    @DisplayName("Ввод действительного логина и недействительного пароля")
+    @Description("Ошибка входа в приложение после ввода действительного логина и недействительного пароля")
     public void validLoginAndInvalidPassword() {
         loginAndVerify(DataHelper.VALID_LOGIN, DataHelper.INVALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
     }
 
-    @Test
-    @DisplayName("Entering an invalid login and a invalid password")
-    @Description("Error logging into the application after entering an invalid login and invalid password")
+    @DisplayName("Ввод недействительного логина и недействительного пароля")
+    @Description("Ошибка входа в приложение после ввода недействительного логина и недействительного пароля")
     public void invalidLoginAndInvalidPassword() {
         loginAndVerify(DataHelper.INVALID_LOGIN, DataHelper.INVALID_PASSWORD, DataHelper.TOAST_MESSAGE_INVALID_LOGIN_AND_PASSWORD);
 
     }
 
     @Test
-    @DisplayName("Empty login field and enter a valid password")
-    @Description("Error logging into the application after not entering login and entering valid password")
+    @DisplayName("Пустое поле логина и ввод действительного пароля")
+    @Description("Ошибка входа в приложение после оставления поля логина пустым и ввода действительного пароля")
     public void emptyLoginAndValidPassword() {
         loginAndVerify("", DataHelper.VALID_PASSWORD, DataHelper.TOAST_MESSAGE_EMPTY_DATA);
 
     }
 
     @Test
-    @DisplayName("Entering a valid password and the password field empty")
-    @Description("Error logging into the application after entering valid login and not entering password")
+    @DisplayName("Ввод действительного логина и пустое поле пароля")
+    @Description("Ошибка входа в приложение после ввода действительного логина и оставления поля пароля пустым")
     public void validLoginAndEmptyPassword() {
         loginAndVerify(DataHelper.VALID_LOGIN, "", DataHelper.TOAST_MESSAGE_EMPTY_DATA);
 
     }
 
     @Test
-    @DisplayName("Empty login and password fields")
-    @Description("Error logging into the application after not entering login and password")
+    @DisplayName("Пустые поля логина и пароля")
+    @Description("Ошибка входа в приложение после оставления полей логина и пароля пустыми")
     public void EmptyLoginAndEmptyPassword() {
         loginAndVerify("", "", DataHelper.TOAST_MESSAGE_EMPTY_DATA);
 
     }
 
     @Test
-    @DisplayName("Logout test")
-    @Description("Logout. Go to the authorization page")
+    @DisplayName("Тест выхода из аккаунта")
+    @Description("Выход из аккаунта и переход на страницу авторизации")
     public void LogoutTest() {
-        DataHelper validCredentials = DataHelper.validCredentials();
-        loginSteps.login(validCredentials);
-        mainPage.verifyMainPageWithShortNews();
+        loginWithValidCredentialsAndVerify();
         mainPage.autoLogout();
         loginPage.checkLoginPage();
     }
 
     @Test
-    @DisplayName("Previously saved Login test")
-    @Description("Login with previously saved Login and Password")
+    @DisplayName("Тест ранее сохраненного логина")
+    @Description("Вход с ранее сохраненным логином и паролем")
     public void SavedLoginTest() {
-        DataHelper validCredentials = DataHelper.validCredentials();
-        loginSteps.login(validCredentials);
-        mainPage.verifyMainPageWithShortNews();
+        loginWithValidCredentialsAndVerify();
         closeApp();
         restartApp();
         mainPage.verifyMainPageWithShortNews();
     }
 
     private void closeApp() {
-        mActivityScenarioRule.getScenario().onActivity(activity -> {
-            activity.finishAffinity();
+        mActivityScenarioRule.getScenario().onActivity(activity -> {activity.finishAffinity();
         });
     }
 

@@ -15,28 +15,24 @@ import ru.iteco.fmhandroid.ui.utils.WaitForViewAction;
 
 public class MainPage {
 
-    //верификация открытия главной страницы
     public void verifyMainPageWithShortNews() {
         onView(withId(R.id.all_news_text_view))
                 .check(matches(isDisplayed()))
                 .check(matches(withText("ALL NEWS")));
     }
 
-    //нажатие на иконку авторизации для последующего выхода
     public void clickAuthorizationButton() {
         onView(withId(R.id.authorization_image_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    //нажатие на кнопку выхода
     public void clickLogOffButton() {
         onView(withId(android.R.id.title))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    //метод ожидания
     public void waitForElement(int viewId, long timeout) {
         onView(isRoot()).perform(WaitForViewAction.waitDisplayed(viewId, timeout));
     }
@@ -47,7 +43,6 @@ public class MainPage {
         clickLogOffButton();
     }
 
-    //нажатие на кнопку ALL NEWS
     public void clickAllNewsButton() {
         onView(withId(R.id.all_news_text_view))
                 .check(matches(isDisplayed()))
@@ -55,18 +50,15 @@ public class MainPage {
                 .perform(click());
     }
 
-    //нажатие на кнопку Гамбургер
     public void clickHamburgerAndNews() {
             onView(withId(R.id.main_menu_image_button))
                     .check(matches(isDisplayed()))
-//                .check(matches(withText("ALL NEWS")))
                     .perform(click());
         onView(allOf(withId(android.R.id.title), withText("News")))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    //нажатие на кнопку Гамбургер
     public void clickHamburgerAndAbout() {
         onView(withId(R.id.main_menu_image_button))
                 .check(matches(isDisplayed()))
