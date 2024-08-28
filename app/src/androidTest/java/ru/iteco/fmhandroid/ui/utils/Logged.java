@@ -4,7 +4,12 @@ import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
 
 public class Logged {
-    private MainPage mainPage = new MainPage();
+
+    private final MainPage mainPage;
+
+    public Logged() {
+        this.mainPage = new MainPage();
+    }
 
     public boolean isLoggedIn() {
         try {
@@ -17,8 +22,7 @@ public class Logged {
 
     public void ensureLoggedOut() {
         if (isLoggedIn()) {
-            mainPage.clickAuthorizationButton();
-            mainPage.clickLogOffButton();
+            mainPage.autoLogout();
         }
     }
 }

@@ -10,6 +10,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.utils.WaitForViewAction;
 
@@ -28,6 +29,7 @@ public class LoginPage {
     }
 
     public void clickLoginButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.enter_button);
         onView(withId(R.id.enter_button))
                 .check(matches(isDisplayed()))
                 .perform(click());

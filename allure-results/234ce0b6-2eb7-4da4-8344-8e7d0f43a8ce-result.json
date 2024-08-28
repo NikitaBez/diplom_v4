@@ -1,0 +1,69 @@
+{
+    "name": "Тест ранее сохраненного логина",
+    "start": 1724807368959,
+    "stop": 1724807380170,
+    "stage": "finished",
+    "description": "Вход с ранее сохраненным логином и паролем",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+        {
+            "name": "Тап по кнопке с id: 2131230969",
+            "start": 1724807375807,
+            "stop": 1724807375807,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        }
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "234ce0b6-2eb7-4da4-8344-8e7d0f43a8ce",
+    "historyId": "c89431a95cc9c8a69447dfb987a798af",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.SavedLoginTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.tests"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "SavedLoginTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(639)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.pageobjects.LoginPage;
 import ru.iteco.fmhandroid.ui.pageobjects.MainPage;
@@ -36,30 +37,10 @@ public class AppManager {
     private MainPage mainPage = new MainPage();
 
     public static void waitElement(int viewId, long millis) {
-        onView(isRoot()).perform(WaitForViewAction.waitDisplayed((viewId), millis));
+        onView(isRoot()).perform(WaitForViewAction.waitDisplayed(viewId, millis));
     }
 
-    public boolean isOnLoginPage() {
-        try {
-            waitElement(R.id.login_text_input_layout, 5000);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean isOnNewsPage() {
-        try {
-            waitElement(R.id.all_news_text_view, 5000);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
-
+    public static Matcher<View> childAtPosition(final Matcher<View> parentMatcher, final int position) {
         return new TypeSafeMatcher<View>() {
             @Override
             public void describeTo(Description description) {
@@ -70,7 +51,6 @@ public class AppManager {
             @Override
             public boolean matchesSafely(View view) {
                 View parent = (View) view.getParent();
-                // Проверяем, является ли родитель ViewGroup
                 return parent instanceof ViewGroup && parentMatcher.matches(parent)
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
@@ -79,50 +59,34 @@ public class AppManager {
 
     public static String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);
+        return dateFormat.format(new Date());
     }
 
     public static String getCurrentTime() {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
-        Date date = new Date();
-        return timeFormat.format(date);
+        return timeFormat.format(new Date());
     }
 
     public static void inputText(Integer resourceId, String inputText) {
+        Allure.step("Ввод " + inputText + " в поле с id: " + resourceId);
         onView(allOf(withId(resourceId)))
                 .check(matches(isDisplayed()))
                 .perform(replaceText(inputText), closeSoftKeyboard());
     }
 
-//    public static int getItemCountFromRecyclerView() {
-//        AtomicInteger count = new AtomicInteger();
-//
-//        onView(withId(R.id.news_list_recycler_view))
-////                .check(matches(isDisplayed()))
-//                .perform(new RecyclerViewItemCountAssertion(count));
-//
-//        return count.get();
-//    }
-
-
     public static int getItemCountFromRecyclerView() {
         final AtomicInteger itemCount = new AtomicInteger(0);
 
-        // Используем onView чтобы получить доступ к RecyclerView
         onView(withId(R.id.news_list_recycler_view))
-                .check(matches(isDisplayed()))  // Проверка, что RecyclerView отображается
+                .check(matches(isDisplayed()))
                 .check((view, noViewFoundException) -> {
-                    // Проверяем, что не было исключения
                     if (noViewFoundException != null) {
                         throw noViewFoundException;
                     }
 
-                    // Получаем доступ к адаптеру RecyclerView
                     RecyclerView recyclerView = (RecyclerView) view;
                     RecyclerView.Adapter adapter = recyclerView.getAdapter();
 
-                    // Если адаптер существует, получаем количество элементов
                     if (adapter != null) {
                         itemCount.set(adapter.getItemCount());
                     } else {
@@ -133,58 +97,6 @@ public class AppManager {
         return itemCount.get();
     }
 
-
-    private static class RecyclerViewItemCountAssertion implements ViewAction {
-        private final AtomicInteger count;
-
-        RecyclerViewItemCountAssertion(AtomicInteger count) {
-            this.count = count;
-        }
-
-        @Override
-        public Matcher<View> getConstraints() {
-            return isAssignableFrom(RecyclerView.class);
-        }
-
-        @Override
-        public String getDescription() {
-            return "Get recycler view item count";
-        }
-
-        @Override
-        public void perform(UiController uiController, View view) {
-            RecyclerView recyclerView = (RecyclerView) view;
-            RecyclerView.Adapter adapter = recyclerView.getAdapter();
-            count.set(adapter.getItemCount());
-        }
-    }
-
-    public static Matcher<View> withRecyclerViewItemResource(final int resourceId) {
-        return new TypeSafeMatcher<View>() {
-
-            @Override
-            public void describeTo(Description description) {
-
-            }
-
-            @Override
-            protected boolean matchesSafely(View view) {
-                if (view instanceof RecyclerView) {
-                    RecyclerView recyclerView = (RecyclerView) view;
-                    int itemCount = recyclerView.getAdapter().getItemCount();
-                    for (int position = 0; position < itemCount; position++) {
-                        RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForAdapterPosition(position);
-                        if (viewHolder != null && viewHolder.itemView.getId() != resourceId) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-                return false;
-            }
-
-        };
-    }
     public static ViewAction clickChildElementById(final int id) {
         return new ViewAction() {
             @Override
@@ -205,4 +117,3 @@ public class AppManager {
         };
     }
 }
-

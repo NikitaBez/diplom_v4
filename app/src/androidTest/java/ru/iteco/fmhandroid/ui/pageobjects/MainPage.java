@@ -10,6 +10,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.Matchers.allOf;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.utils.WaitForViewAction;
 
@@ -22,12 +23,14 @@ public class MainPage {
     }
 
     public void clickAuthorizationButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.authorization_image_button);
         onView(withId(R.id.authorization_image_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
     public void clickLogOffButton() {
+        Allure.step("Тап по кнопке с id: " + android.R.id.title);
         onView(withId(android.R.id.title))
                 .check(matches(isDisplayed()))
                 .perform(click());
@@ -44,6 +47,7 @@ public class MainPage {
     }
 
     public void clickAllNewsButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.all_news_text_view);
         onView(withId(R.id.all_news_text_view))
                 .check(matches(isDisplayed()))
                 .check(matches(withText("ALL NEWS")))
@@ -51,6 +55,7 @@ public class MainPage {
     }
 
     public void clickHamburgerAndNews() {
+        Allure.step("Тап по кнопке с id: " + R.id.main_menu_image_button);
             onView(withId(R.id.main_menu_image_button))
                     .check(matches(isDisplayed()))
                     .perform(click());
@@ -60,6 +65,7 @@ public class MainPage {
     }
 
     public void clickHamburgerAndAbout() {
+        Allure.step("Тап по кнопке с id: " + R.id.main_menu_image_button);
         onView(withId(R.id.main_menu_image_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
@@ -69,6 +75,7 @@ public class MainPage {
     }
 
     public  void clickQuotesButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.our_mission_image_button);
         onView(withId(R.id.our_mission_image_button))
                 .check(matches(isDisplayed()))
                 .perform(click());

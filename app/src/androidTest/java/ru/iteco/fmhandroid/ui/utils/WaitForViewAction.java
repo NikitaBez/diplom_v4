@@ -17,10 +17,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.any;
 
 public class WaitForViewAction implements ViewAction {
+
     private final int viewId;
     private final long millis;
 
-    public WaitForViewAction(int viewId, long millis) {
+    private WaitForViewAction(int viewId, long millis) {
         this.viewId = viewId;
         this.millis = millis;
     }
@@ -32,7 +33,7 @@ public class WaitForViewAction implements ViewAction {
 
     @Override
     public String getDescription() {
-        return "wait for a specific view with id <" + viewId + "> to be displayed during " + millis + " millis.";
+        return "Wait for a view with id <" + viewId + "> to be displayed within " + millis + " milliseconds.";
     }
 
     @Override
@@ -43,25 +44,23 @@ public class WaitForViewAction implements ViewAction {
         final Matcher<View> matchId = withId(viewId);
         final Matcher<View> matchDisplayed = isDisplayed();
 
-        do {
+        while (System.currentTimeMillis() < endTime) {
             for (View child : TreeIterables.breadthFirstViewTraversal(view.getRootView())) {
                 if (matchId.matches(child) && matchDisplayed.matches(child)) {
                     return;
                 }
             }
-
             uiController.loopMainThreadForAtLeast(50);
-        } while (System.currentTimeMillis() < endTime);
+        }
 
-        // timeout happens
         throw new PerformException.Builder()
-                .withActionDescription(this.getDescription())
+                .withActionDescription(getDescription())
                 .withViewDescription(HumanReadables.describe(view))
                 .withCause(new TimeoutException())
                 .build();
     }
 
-    public static ViewAction waitDisplayed(final int viewId, final long millis) {
+    public static ViewAction waitDisplayed(int viewId, long millis) {
         return new WaitForViewAction(viewId, millis);
     }
 }

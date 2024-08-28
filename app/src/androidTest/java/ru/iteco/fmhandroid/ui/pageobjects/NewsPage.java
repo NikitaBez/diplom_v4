@@ -34,6 +34,7 @@ import androidx.test.espresso.Espresso;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.ViewInteraction;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.utils.AppManager;
@@ -49,12 +50,14 @@ public class NewsPage {
     }
 
     public void clickEditButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.edit_news_material_button);
         onView(withId(R.id.edit_news_material_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
     public void clickCreateNewsButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.add_news_image_view);
         onView(withId(R.id.add_news_image_view))
                 .check(matches(isDisplayed()))
                 .perform(click());
@@ -105,6 +108,7 @@ public class NewsPage {
     }
 
     public void clickSaveButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.save_button);
         onView(withId(R.id.save_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
@@ -113,6 +117,7 @@ public class NewsPage {
     public void createNews() {
         String date = getCurrentDate();
         title = DataHelper.generateRandomString(10);
+//        title = DataHelper.NEW_NEWS_TITLE;
         String description = DataHelper.NEW_NEWS_DESCRIPTION;
         clickCreateNewsButton();
         clickOnDropdownCategory();

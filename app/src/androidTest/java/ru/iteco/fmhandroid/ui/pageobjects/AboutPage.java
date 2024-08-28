@@ -16,6 +16,7 @@ import android.content.Intent;
 
 import androidx.test.espresso.intent.matcher.IntentMatchers;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.utils.WaitForViewAction;
@@ -28,18 +29,21 @@ public class AboutPage {
     }
 
     public void clickBackButton() {
+        Allure.step("Тап по кнопке с id: " + R.id.about_back_image_button);
         onView(withId(R.id.about_back_image_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
     public void clickPrivacyPolicy() {
+        Allure.step("Тап по кнопке с id: " + R.id.about_privacy_policy_value_text_view);
         onView(withId(R.id.about_privacy_policy_value_text_view))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
     public void clickTermsOfUse() {
+        Allure.step("Тап по кнопке с id: " + R.id.about_terms_of_use_value_text_view);
         onView(withId(R.id.about_terms_of_use_value_text_view))
                 .check(matches(isDisplayed()))
                 .perform(click());

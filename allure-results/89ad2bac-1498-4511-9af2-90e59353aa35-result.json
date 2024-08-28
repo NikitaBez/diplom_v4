@@ -1,19 +1,35 @@
 {
-    "name": "Empty login and password fields",
-    "start": 1723120186471,
-    "stop": 1723120192533,
+    "name": "Пустые поля логина и пароля",
+    "start": 1724807354683,
+    "stop": 1724807360537,
     "stage": "finished",
-    "description": "Error logging into the application after not entering login and password",
+    "description": "Ошибка входа в приложение после оставления полей логина и пароля пустыми",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
+        {
+            "name": "Тап по кнопке с id: 2131230969",
+            "start": 1724807360115,
+            "stop": 1724807360115,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        }
     ],
     "attachments": [
     ],
     "parameters": [
     ],
-    "uuid": "6275694b-6ebf-49a3-8844-804b33b197fa",
+    "uuid": "89ad2bac-1498-4511-9af2-90e59353aa35",
     "historyId": "462c59e46230fa647f1443648eaed10c",
     "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.EmptyLoginAndEmptyPassword",
     "labels": [
@@ -39,7 +55,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(944)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(639)"
         },
         {
             "name": "framework",

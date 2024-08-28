@@ -1,15 +1,16 @@
 package ru.iteco.fmhandroid.ui.tests;
 
-import android.view.View;
-
 import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
+import androidx.test.filters.LargeTest;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
@@ -21,6 +22,8 @@ import ru.iteco.fmhandroid.ui.pageobjects.QuotesPage;
 import ru.iteco.fmhandroid.ui.steps.LoginSteps;
 import ru.iteco.fmhandroid.ui.utils.Logged;
 
+@LargeTest
+@RunWith(AllureAndroidJUnit4.class)
 public class AboutTest {
 
     private LoginSteps loginSteps;
@@ -101,5 +104,4 @@ public class AboutTest {
         aboutPage.copyrightCheck();
         aboutPage.clickBackButton();
     }
-
 }
