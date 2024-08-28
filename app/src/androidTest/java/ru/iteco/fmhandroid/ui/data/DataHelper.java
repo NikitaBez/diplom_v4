@@ -12,7 +12,9 @@ public class DataHelper {
     public static final String INVALID_PASSWORD = generateRandomString(10);
 
     public static final String NEW_NEWS_TITLE = "Nik's new news";
+    public static final String CHANGE_NEWS_TITLE = "Nik's change news";
     public static final String NEW_NEWS_DESCRIPTION = "News description";
+    public static final String CHANGE_NEWS_DESCRIPTION = "Change News description";
 
     private String login;
     private String password;

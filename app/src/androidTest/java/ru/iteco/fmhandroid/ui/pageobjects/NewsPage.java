@@ -231,8 +231,31 @@ public class NewsPage {
         assertEquals(countBeforeCancel, countAfterCancel);
     }
 
+    public void clickEditingNewsButton() {
+        Allure.step("Редактирование созданной ранее новости");
+        waitElement(R.id.news_list_recycler_view, 9000);
+
+        onView(allOf(withId(R.id.news_item_material_card_view), hasDescendant(withText(title))))
+                .check(matches(isDisplayed()))
+                .perform(clickChildElementById(R.id.edit_news_item_image_view));
+
+    }
+
+    public void editNews() {
+        Allure.step("Изменение заголовка новости");
+        String newTitle = DataHelper.CHANGE_NEWS_TITLE;
+        String newDescription = DataHelper.CHANGE_NEWS_DESCRIPTION;
+        clickEditingNewsButton();
+        inputTitle(newTitle);
+        inputText(R.id.news_item_description_text_input_edit_text, newDescription);
+        clickSaveButton();
+        onView(allOf(withText(newTitle), isDisplayed()));
+    }
+
     private String getElementDescription(int viewId) {
         switch (viewId) {
+            case R.id.edit_news_item_image_view:
+                return "Редактировать заголовок и описание новости";
             case R.id.edit_news_material_button:
                 return "Редактировать новости";
             case R.id.add_news_image_view:

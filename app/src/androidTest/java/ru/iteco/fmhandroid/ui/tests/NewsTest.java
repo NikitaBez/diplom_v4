@@ -109,4 +109,17 @@ public class NewsTest {
         newsPage.createNews();
         newsPage.undoNewsDeletion();
     }
+
+    @Test
+    @DisplayName("Редактирование заголовка и описания новости")
+    @Description("Созданная новость будет отредактирована, и будет проверено, что новость с новым заголовком появилась в списке")
+    public void editNewsTitleAndDescription() {
+        loginAndNavigateToNewsPage();
+        navigateToFullNewsList();
+        newsPage.clickEditButton();
+        newsPage.createNews();
+        navigateToFullNewsList();
+        newsPage.clickEditButton();
+        newsPage.editNews();
+    }
 }
