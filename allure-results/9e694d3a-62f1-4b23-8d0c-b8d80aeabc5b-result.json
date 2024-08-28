@@ -1,81 +1,17 @@
 {
-    "name": "Ввод действительного логина и недействительного пароля",
-    "start": 1724811604457,
-    "stop": 1724811611134,
+    "name": "Ввод действительного логина и пустое поле пароля",
+    "start": 1724842001394,
+    "stop": 1724842008232,
     "stage": "finished",
-    "description": "Ошибка входа в приложение после ввода действительного логина и недействительного пароля",
+    "description": "Ошибка входа в приложение после ввода действительного логина и оставления поля пароля пустым",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
         {
             "name": "Ожидание элемента 'Все новости' в течение 5000 мс",
-            "start": 1724811604699,
-            "stop": 1724811604699,
-            "stage": "finished",
-            "description": null,
-            "descriptionHtml": null,
-            "status": "passed",
-            "statusDetails": null,
-            "steps": [
-            ],
-            "attachments": [
-            ],
-            "parameters": [
-            ]
-        },
-        {
-            "name": "Автовыход из системы",
-            "start": 1724811608144,
-            "stop": 1724811608144,
-            "stage": "finished",
-            "description": null,
-            "descriptionHtml": null,
-            "status": "passed",
-            "statusDetails": null,
-            "steps": [
-            ],
-            "attachments": [
-            ],
-            "parameters": [
-            ]
-        },
-        {
-            "name": "Тап по кнопке 'Авторизация'",
-            "start": 1724811608144,
-            "stop": 1724811608144,
-            "stage": "finished",
-            "description": null,
-            "descriptionHtml": null,
-            "status": "passed",
-            "statusDetails": null,
-            "steps": [
-            ],
-            "attachments": [
-            ],
-            "parameters": [
-            ]
-        },
-        {
-            "name": "Ожидание элемента 'Заголовок' в течение 5000 мс",
-            "start": 1724811608514,
-            "stop": 1724811608514,
-            "stage": "finished",
-            "description": null,
-            "descriptionHtml": null,
-            "status": "passed",
-            "statusDetails": null,
-            "steps": [
-            ],
-            "attachments": [
-            ],
-            "parameters": [
-            ]
-        },
-        {
-            "name": "Тап по кнопке 'Выход'",
-            "start": 1724811608515,
-            "stop": 1724811608515,
+            "start": 1724842001707,
+            "stop": 1724842001707,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -90,8 +26,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811608779,
-            "stop": 1724811608779,
+            "start": 1724842006755,
+            "stop": 1724842006755,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -106,8 +42,8 @@
         },
         {
             "name": "Ввод логина в поле 'Логин'",
-            "start": 1724811608780,
-            "stop": 1724811608780,
+            "start": 1724842006757,
+            "stop": 1724842006757,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -122,8 +58,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811609540,
-            "stop": 1724811609540,
+            "start": 1724842007519,
+            "stop": 1724842007519,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -138,8 +74,8 @@
         },
         {
             "name": "Ввод пароля в поле 'Пароль'",
-            "start": 1724811609541,
-            "stop": 1724811609541,
+            "start": 1724842007520,
+            "stop": 1724842007520,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -154,8 +90,8 @@
         },
         {
             "name": "Тап по кнопке 'Войти'",
-            "start": 1724811610321,
-            "stop": 1724811610321,
+            "start": 1724842007525,
+            "stop": 1724842007525,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -173,9 +109,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "c401313e-e7bd-4bc1-ac7c-cd04c8e0fc56",
-    "historyId": "6a90f498fa46f7eb41c4c2efaadb315c",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.validLoginAndInvalidPassword",
+    "uuid": "9e694d3a-62f1-4b23-8d0c-b8d80aeabc5b",
+    "historyId": "3c7426cae8c971ffa8a088a2a5010eb",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.validLoginAndEmptyPassword",
     "labels": [
         {
             "name": "package",
@@ -187,7 +123,7 @@
         },
         {
             "name": "testMethod",
-            "value": "validLoginAndInvalidPassword"
+            "value": "validLoginAndEmptyPassword"
         },
         {
             "name": "suite",
@@ -199,7 +135,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(593)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(529)"
         },
         {
             "name": "framework",

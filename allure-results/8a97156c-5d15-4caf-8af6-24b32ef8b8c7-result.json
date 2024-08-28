@@ -1,17 +1,17 @@
 {
-    "name": "Ссылка на политику конфиденциальности",
-    "start": 1724811428105,
-    "stop": 1724811437306,
+    "name": "Проверка полного списка новостей через гамбургер-меню",
+    "start": 1724842072482,
+    "stop": 1724842079330,
     "stage": "finished",
-    "description": "Откроется веб-страница с политикой конфиденциальности",
+    "description": "Отображение полного списка новостей при нажатии на гамбургер-меню",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
         {
             "name": "Ожидание элемента 'Все новости' в течение 5000 мс",
-            "start": 1724811428353,
-            "stop": 1724811428353,
+            "start": 1724842072722,
+            "stop": 1724842072723,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -26,8 +26,8 @@
         },
         {
             "name": "Автовыход из системы",
-            "start": 1724811431960,
-            "stop": 1724811431960,
+            "start": 1724842075803,
+            "stop": 1724842075803,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -42,8 +42,8 @@
         },
         {
             "name": "Тап по кнопке 'Авторизация'",
-            "start": 1724811431960,
-            "stop": 1724811431960,
+            "start": 1724842075803,
+            "stop": 1724842075803,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -58,8 +58,8 @@
         },
         {
             "name": "Ожидание элемента 'Заголовок' в течение 5000 мс",
-            "start": 1724811432337,
-            "stop": 1724811432337,
+            "start": 1724842076139,
+            "stop": 1724842076139,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -74,8 +74,8 @@
         },
         {
             "name": "Тап по кнопке 'Выход'",
-            "start": 1724811432338,
-            "stop": 1724811432338,
+            "start": 1724842076140,
+            "stop": 1724842076140,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -90,8 +90,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811432660,
-            "stop": 1724811432660,
+            "start": 1724842076404,
+            "stop": 1724842076404,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -106,8 +106,8 @@
         },
         {
             "name": "Ввод логина в поле 'Логин'",
-            "start": 1724811432661,
-            "stop": 1724811432661,
+            "start": 1724842076405,
+            "stop": 1724842076405,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -122,8 +122,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811433505,
-            "stop": 1724811433506,
+            "start": 1724842077130,
+            "stop": 1724842077130,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -138,8 +138,8 @@
         },
         {
             "name": "Ввод пароля в поле 'Пароль'",
-            "start": 1724811433507,
-            "stop": 1724811433507,
+            "start": 1724842077131,
+            "stop": 1724842077131,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -154,8 +154,8 @@
         },
         {
             "name": "Тап по кнопке 'Войти'",
-            "start": 1724811434351,
-            "stop": 1724811434351,
+            "start": 1724842077928,
+            "stop": 1724842077928,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -170,8 +170,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811434639,
-            "stop": 1724811434639,
+            "start": 1724842078202,
+            "stop": 1724842078202,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -186,8 +186,8 @@
         },
         {
             "name": "Проверка отображения основного экрана с текстом 'ALL NEWS'",
-            "start": 1724811434966,
-            "stop": 1724811434967,
+            "start": 1724842078404,
+            "stop": 1724842078404,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -201,9 +201,9 @@
             ]
         },
         {
-            "name": "Открытие меню и переход в 'О приложении'",
-            "start": 1724811434986,
-            "stop": 1724811434986,
+            "name": "Открытие меню и переход в 'Новости'",
+            "start": 1724842078408,
+            "stop": 1724842078409,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -217,25 +217,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке 'Политика конфиденциальности'",
-            "start": 1724811435684,
-            "stop": 1724811435684,
-            "stage": "finished",
-            "description": null,
-            "descriptionHtml": null,
-            "status": "passed",
-            "statusDetails": null,
-            "steps": [
-            ],
-            "attachments": [
-            ],
-            "parameters": [
-            ]
-        },
-        {
-            "name": "Проверка перехода по ссылке на политику конфиденциальности",
-            "start": 1724811435967,
-            "stop": 1724811435967,
+            "name": "Проверка отображения страницы новостей",
+            "start": 1724842079046,
+            "stop": 1724842079046,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -253,9 +237,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "bbc1cd68-e900-4cf5-aa0b-d62aa13ddc6f",
-    "historyId": "d636feea32fc4ac94ce01050b7089bd1",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.AboutTest.checkPrivacyPolicyLink",
+    "uuid": "8a97156c-5d15-4caf-8af6-24b32ef8b8c7",
+    "historyId": "1cde689c6a54d3a04790670bc97c6cc5",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.NewsTest.checkFullListOfNewsPageHamburger",
     "labels": [
         {
             "name": "package",
@@ -263,15 +247,15 @@
         },
         {
             "name": "testClass",
-            "value": "ru.iteco.fmhandroid.ui.tests.AboutTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.NewsTest"
         },
         {
             "name": "testMethod",
-            "value": "checkPrivacyPolicyLink"
+            "value": "checkFullListOfNewsPageHamburger"
         },
         {
             "name": "suite",
-            "value": "ru.iteco.fmhandroid.ui.tests.AboutTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.NewsTest"
         },
         {
             "name": "host",
@@ -279,7 +263,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(549)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(529)"
         },
         {
             "name": "framework",

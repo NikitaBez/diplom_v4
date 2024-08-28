@@ -10,7 +10,7 @@ import ru.iteco.fmhandroid.ui.tests.QuotesTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
-        {AboutTest.class, LoginTest.class, NewsTest.class, QuotesTest.class})
+        {LoginTest.class, NewsTest.class, QuotesTest.class, AboutTest.class})
 
 public class AllTestsSuiteRunner {
 

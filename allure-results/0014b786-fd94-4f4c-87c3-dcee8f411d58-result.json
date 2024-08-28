@@ -1,17 +1,17 @@
 {
-    "name": "Удаление новости",
-    "start": 1724813402000,
-    "stop": 1724813421182,
+    "name": "Редактирование заголовка и описания новости",
+    "start": 1724842102155,
+    "stop": 1724842115548,
     "stage": "finished",
-    "description": "Созданная новость, будет найдена в списке новостей и удалена",
+    "description": "Созданная новость будет отредактирована, и будет проверено, что новость с новым заголовком появилась в списке",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
         {
             "name": "Ожидание элемента 'Все новости' в течение 5000 мс",
-            "start": 1724813402682,
-            "stop": 1724813402683,
+            "start": 1724842102415,
+            "stop": 1724842102415,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -26,8 +26,8 @@
         },
         {
             "name": "Автовыход из системы",
-            "start": 1724813406407,
-            "stop": 1724813406407,
+            "start": 1724842105580,
+            "stop": 1724842105581,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -42,8 +42,8 @@
         },
         {
             "name": "Тап по кнопке 'Авторизация'",
-            "start": 1724813406407,
-            "stop": 1724813406407,
+            "start": 1724842105581,
+            "stop": 1724842105581,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -58,8 +58,8 @@
         },
         {
             "name": "Ожидание элемента 'Заголовок' в течение 5000 мс",
-            "start": 1724813406836,
-            "stop": 1724813406836,
+            "start": 1724842105935,
+            "stop": 1724842105935,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -74,8 +74,8 @@
         },
         {
             "name": "Тап по кнопке 'Выход'",
-            "start": 1724813406841,
-            "stop": 1724813406841,
+            "start": 1724842105936,
+            "stop": 1724842105936,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -90,8 +90,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724813407157,
-            "stop": 1724813407157,
+            "start": 1724842106213,
+            "stop": 1724842106213,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -106,8 +106,8 @@
         },
         {
             "name": "Ввод логина в поле 'Логин'",
-            "start": 1724813407158,
-            "stop": 1724813407158,
+            "start": 1724842106213,
+            "stop": 1724842106213,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -122,8 +122,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724813408022,
-            "stop": 1724813408023,
+            "start": 1724842106942,
+            "stop": 1724842106942,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -138,8 +138,8 @@
         },
         {
             "name": "Ввод пароля в поле 'Пароль'",
-            "start": 1724813408024,
-            "stop": 1724813408024,
+            "start": 1724842106942,
+            "stop": 1724842106942,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -154,8 +154,8 @@
         },
         {
             "name": "Тап по кнопке 'Войти'",
-            "start": 1724813408982,
-            "stop": 1724813408982,
+            "start": 1724842107726,
+            "stop": 1724842107726,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -170,8 +170,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724813409280,
-            "stop": 1724813409280,
+            "start": 1724842108007,
+            "stop": 1724842108007,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -186,8 +186,8 @@
         },
         {
             "name": "Проверка отображения основного экрана с текстом 'ALL NEWS'",
-            "start": 1724813409994,
-            "stop": 1724813409994,
+            "start": 1724842108215,
+            "stop": 1724842108215,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -202,8 +202,8 @@
         },
         {
             "name": "Открытие меню и переход в 'Новости'",
-            "start": 1724813409997,
-            "stop": 1724813409997,
+            "start": 1724842108219,
+            "stop": 1724842108219,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -218,8 +218,8 @@
         },
         {
             "name": "Проверка отображения страницы новостей",
-            "start": 1724813410810,
-            "stop": 1724813410810,
+            "start": 1724842108871,
+            "stop": 1724842108871,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -234,8 +234,8 @@
         },
         {
             "name": "Тап по кнопке 'Редактировать новости'",
-            "start": 1724813410811,
-            "stop": 1724813410811,
+            "start": 1724842108873,
+            "stop": 1724842108873,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -250,8 +250,8 @@
         },
         {
             "name": "Тап по кнопке 'Создать новость'",
-            "start": 1724813411342,
-            "stop": 1724813411342,
+            "start": 1724842109253,
+            "stop": 1724842109253,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -266,8 +266,8 @@
         },
         {
             "name": "Открытие выпадающего списка категорий",
-            "start": 1724813411769,
-            "stop": 1724813411769,
+            "start": 1724842109587,
+            "stop": 1724842109587,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -282,8 +282,8 @@
         },
         {
             "name": "Ввод заголовка новости",
-            "start": 1724813412208,
-            "stop": 1724813412208,
+            "start": 1724842109973,
+            "stop": 1724842109973,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -298,8 +298,8 @@
         },
         {
             "name": "Ввод текущей даты",
-            "start": 1724813412504,
-            "stop": 1724813412504,
+            "start": 1724842110241,
+            "stop": 1724842110241,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -314,8 +314,8 @@
         },
         {
             "name": "Ввод текущего времени",
-            "start": 1724813412534,
-            "stop": 1724813412534,
+            "start": 1724842110264,
+            "stop": 1724842110264,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -330,8 +330,8 @@
         },
         {
             "name": "Ввод News description в поле с id: 2131231126",
-            "start": 1724813413856,
-            "stop": 1724813413856,
+            "start": 1724842111311,
+            "stop": 1724842111311,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -346,8 +346,8 @@
         },
         {
             "name": "Тап по кнопке 'Сохранить новость'",
-            "start": 1724813413886,
-            "stop": 1724813413886,
+            "start": 1724842111332,
+            "stop": 1724842111332,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -362,8 +362,8 @@
         },
         {
             "name": "Открытие меню и переход в 'Новости'",
-            "start": 1724813415748,
-            "stop": 1724813415748,
+            "start": 1724842112845,
+            "stop": 1724842112845,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -378,8 +378,8 @@
         },
         {
             "name": "Проверка отображения страницы новостей",
-            "start": 1724813416555,
-            "stop": 1724813416556,
+            "start": 1724842113526,
+            "stop": 1724842113526,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -394,8 +394,8 @@
         },
         {
             "name": "Тап по кнопке 'Редактировать новости'",
-            "start": 1724813416557,
-            "stop": 1724813416557,
+            "start": 1724842113527,
+            "stop": 1724842113527,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -409,9 +409,9 @@
             ]
         },
         {
-            "name": "Удаление новости",
-            "start": 1724813417002,
-            "stop": 1724813417002,
+            "name": "Изменение заголовка новости",
+            "start": 1724842113878,
+            "stop": 1724842113878,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -425,9 +425,57 @@
             ]
         },
         {
-            "name": "Проверка предупреждения при удалении новости",
-            "start": 1724813417003,
-            "stop": 1724813417003,
+            "name": "Редактирование созданной ранее новости",
+            "start": 1724842113878,
+            "stop": 1724842113878,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ввод заголовка новости",
+            "start": 1724842113882,
+            "stop": 1724842113882,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ввод Change News description в поле с id: 2131231126",
+            "start": 1724842114273,
+            "stop": 1724842114273,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Сохранить новость'",
+            "start": 1724842114709,
+            "stop": 1724842114709,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -445,9 +493,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "3711c671-5ad0-4870-b233-43c5433f3b0f",
-    "historyId": "3b8d38e31069bfbdc5e60b274f462f5b",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.NewsTest.deleteNews",
+    "uuid": "0014b786-fd94-4f4c-87c3-dcee8f411d58",
+    "historyId": "8956bd412278014f2d87f74044c48757",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.NewsTest.editNewsTitleAndDescription",
     "labels": [
         {
             "name": "package",
@@ -459,7 +507,7 @@
         },
         {
             "name": "testMethod",
-            "value": "deleteNews"
+            "value": "editNewsTitleAndDescription"
         },
         {
             "name": "suite",
@@ -471,7 +519,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(689)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(529)"
         },
         {
             "name": "framework",

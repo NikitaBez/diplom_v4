@@ -1,17 +1,17 @@
 {
-    "name": "Проверка полного списка новостей через кнопку ALL NEWS",
-    "start": 1724811706267,
-    "stop": 1724811715338,
+    "name": "Создание новой новости",
+    "start": 1724842061319,
+    "stop": 1724842072457,
     "stage": "finished",
-    "description": "Отображение полного списка новостей при нажатии на кнопку ALL NEWS",
+    "description": "В панели управления (Control Panel) создается новость с типом Объявление",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
         {
             "name": "Ожидание элемента 'Все новости' в течение 5000 мс",
-            "start": 1724811706976,
-            "stop": 1724811706976,
+            "start": 1724842061622,
+            "stop": 1724842061622,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -26,8 +26,8 @@
         },
         {
             "name": "Автовыход из системы",
-            "start": 1724811711203,
-            "stop": 1724811711203,
+            "start": 1724842064718,
+            "stop": 1724842064718,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -42,8 +42,8 @@
         },
         {
             "name": "Тап по кнопке 'Авторизация'",
-            "start": 1724811711203,
-            "stop": 1724811711203,
+            "start": 1724842064718,
+            "stop": 1724842064719,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -58,8 +58,8 @@
         },
         {
             "name": "Ожидание элемента 'Заголовок' в течение 5000 мс",
-            "start": 1724811711569,
-            "stop": 1724811711569,
+            "start": 1724842065071,
+            "stop": 1724842065071,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -74,8 +74,8 @@
         },
         {
             "name": "Тап по кнопке 'Выход'",
-            "start": 1724811711571,
-            "stop": 1724811711571,
+            "start": 1724842065072,
+            "stop": 1724842065072,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -90,8 +90,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811711868,
-            "stop": 1724811711868,
+            "start": 1724842065337,
+            "stop": 1724842065337,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -106,8 +106,8 @@
         },
         {
             "name": "Ввод логина в поле 'Логин'",
-            "start": 1724811711870,
-            "stop": 1724811711870,
+            "start": 1724842065338,
+            "stop": 1724842065338,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -122,8 +122,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811712694,
-            "stop": 1724811712695,
+            "start": 1724842066070,
+            "stop": 1724842066070,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -138,8 +138,8 @@
         },
         {
             "name": "Ввод пароля в поле 'Пароль'",
-            "start": 1724811712696,
-            "stop": 1724811712696,
+            "start": 1724842066086,
+            "stop": 1724842066086,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -154,8 +154,8 @@
         },
         {
             "name": "Тап по кнопке 'Войти'",
-            "start": 1724811713561,
-            "stop": 1724811713561,
+            "start": 1724842066885,
+            "stop": 1724842066885,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -170,8 +170,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811713836,
-            "stop": 1724811713836,
+            "start": 1724842067158,
+            "stop": 1724842067159,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -186,8 +186,8 @@
         },
         {
             "name": "Проверка отображения основного экрана с текстом 'ALL NEWS'",
-            "start": 1724811714467,
-            "stop": 1724811714467,
+            "start": 1724842067396,
+            "stop": 1724842067396,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -201,9 +201,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке 'Все новости'",
-            "start": 1724811714476,
-            "stop": 1724811714476,
+            "name": "Открытие меню и переход в 'Новости'",
+            "start": 1724842067404,
+            "stop": 1724842067404,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -218,8 +218,136 @@
         },
         {
             "name": "Проверка отображения страницы новостей",
-            "start": 1724811714912,
-            "stop": 1724811714912,
+            "start": 1724842068041,
+            "stop": 1724842068041,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Редактировать новости'",
+            "start": 1724842068042,
+            "stop": 1724842068042,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Создать новость'",
+            "start": 1724842068419,
+            "stop": 1724842068419,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Открытие выпадающего списка категорий",
+            "start": 1724842068747,
+            "stop": 1724842068747,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ввод заголовка новости",
+            "start": 1724842069118,
+            "stop": 1724842069118,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ввод текущей даты",
+            "start": 1724842069408,
+            "stop": 1724842069408,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ввод текущего времени",
+            "start": 1724842069427,
+            "stop": 1724842069428,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ввод News description в поле с id: 2131231126",
+            "start": 1724842070458,
+            "stop": 1724842070458,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Сохранить новость'",
+            "start": 1724842070480,
+            "stop": 1724842070480,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -237,9 +365,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "6cfc268d-cff7-4b77-817f-696991ef8a40",
-    "historyId": "5bc4e88f035412c85663eebc38a15758",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.NewsTest.checkFullListOfNewsPage",
+    "uuid": "a00bb6fc-dc09-4eed-973c-4ec059bedfae",
+    "historyId": "4331ff64c8f61f0942f764bdb6677d13",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.NewsTest.createNewNews",
     "labels": [
         {
             "name": "package",
@@ -251,7 +379,7 @@
         },
         {
             "name": "testMethod",
-            "value": "checkFullListOfNewsPage"
+            "value": "createNewNews"
         },
         {
             "name": "suite",
@@ -263,7 +391,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(613)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(529)"
         },
         {
             "name": "framework",

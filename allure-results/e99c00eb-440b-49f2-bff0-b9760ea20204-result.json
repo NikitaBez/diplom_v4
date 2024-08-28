@@ -1,17 +1,81 @@
 {
-    "name": "Тест ранее сохраненного логина",
-    "start": 1724811593156,
-    "stop": 1724811604425,
+    "name": "Проверка отображения страницы цитат",
+    "start": 1724842122882,
+    "stop": 1724842129878,
     "stage": "finished",
-    "description": "Вход с ранее сохраненным логином и паролем",
+    "description": "Можно отобразить полный список цитат, нажав на кнопку \"Цитаты\".",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
         {
             "name": "Ожидание элемента 'Все новости' в течение 5000 мс",
-            "start": 1724811593456,
-            "stop": 1724811593456,
+            "start": 1724842123110,
+            "stop": 1724842123110,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Автовыход из системы",
+            "start": 1724842126483,
+            "stop": 1724842126483,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Авторизация'",
+            "start": 1724842126483,
+            "stop": 1724842126483,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ожидание элемента 'Заголовок' в течение 5000 мс",
+            "start": 1724842126825,
+            "stop": 1724842126825,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Выход'",
+            "start": 1724842126826,
+            "stop": 1724842126826,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -26,8 +90,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811598460,
-            "stop": 1724811598461,
+            "start": 1724842127100,
+            "stop": 1724842127100,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -42,8 +106,8 @@
         },
         {
             "name": "Ввод логина в поле 'Логин'",
-            "start": 1724811598462,
-            "stop": 1724811598462,
+            "start": 1724842127101,
+            "stop": 1724842127101,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -58,8 +122,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811599210,
-            "stop": 1724811599210,
+            "start": 1724842127846,
+            "stop": 1724842127846,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -74,8 +138,8 @@
         },
         {
             "name": "Ввод пароля в поле 'Пароль'",
-            "start": 1724811599211,
-            "stop": 1724811599211,
+            "start": 1724842127847,
+            "stop": 1724842127847,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -90,8 +154,8 @@
         },
         {
             "name": "Тап по кнопке 'Войти'",
-            "start": 1724811600033,
-            "stop": 1724811600033,
+            "start": 1724842128647,
+            "stop": 1724842128647,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -106,8 +170,8 @@
         },
         {
             "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811600317,
-            "stop": 1724811600317,
+            "start": 1724842128916,
+            "stop": 1724842128916,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -122,8 +186,8 @@
         },
         {
             "name": "Проверка отображения основного экрана с текстом 'ALL NEWS'",
-            "start": 1724811600611,
-            "stop": 1724811600611,
+            "start": 1724842129127,
+            "stop": 1724842129127,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -137,25 +201,9 @@
             ]
         },
         {
-            "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
-            "start": 1724811600946,
-            "stop": 1724811600946,
-            "stage": "finished",
-            "description": null,
-            "descriptionHtml": null,
-            "status": "passed",
-            "statusDetails": null,
-            "steps": [
-            ],
-            "attachments": [
-            ],
-            "parameters": [
-            ]
-        },
-        {
-            "name": "Проверка отображения основного экрана с текстом 'ALL NEWS'",
-            "start": 1724811604240,
-            "stop": 1724811604240,
+            "name": "Тап по кнопке 'Наша миссия'",
+            "start": 1724842129130,
+            "stop": 1724842129130,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -173,9 +221,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "fee3f9ac-4b5f-4f6e-84ca-d8bebf726be3",
-    "historyId": "c89431a95cc9c8a69447dfb987a798af",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.SavedLoginTest",
+    "uuid": "e99c00eb-440b-49f2-bff0-b9760ea20204",
+    "historyId": "d0576473fa9d25ad681ae87eef91acbf",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.QuotesTest.checkDisplayingQuotes",
     "labels": [
         {
             "name": "package",
@@ -183,15 +231,15 @@
         },
         {
             "name": "testClass",
-            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.QuotesTest"
         },
         {
             "name": "testMethod",
-            "value": "SavedLoginTest"
+            "value": "checkDisplayingQuotes"
         },
         {
             "name": "suite",
-            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.QuotesTest"
         },
         {
             "name": "host",
@@ -199,7 +247,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(593)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(529)"
         },
         {
             "name": "framework",
