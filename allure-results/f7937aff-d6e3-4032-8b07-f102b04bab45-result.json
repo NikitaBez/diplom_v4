@@ -1,17 +1,17 @@
 {
-    "name": "Создание новой новости",
-    "start": 1724807202671,
-    "stop": 1724807214378,
+    "name": "Пустое поле логина и ввод действительного пароля",
+    "start": 1724811556180,
+    "stop": 1724811563219,
     "stage": "finished",
-    "description": "В панели управления (Control Panel) создается новость с типом Объявление",
+    "description": "Ошибка входа в приложение после оставления поля логина пустым и ввода действительного пароля",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
         {
-            "name": "Тап по кнопке с id: 2131230842",
-            "start": 1724807206117,
-            "stop": 1724807206117,
+            "name": "Ожидание элемента 'Все новости' в течение 5000 мс",
+            "start": 1724811556781,
+            "stop": 1724811556782,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -25,9 +25,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 16908310",
-            "start": 1724807206546,
-            "stop": 1724807206546,
+            "name": "Автовыход из системы",
+            "start": 1724811560525,
+            "stop": 1724811560525,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -41,9 +41,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131230969",
-            "start": 1724807208535,
-            "stop": 1724807208535,
+            "name": "Тап по кнопке 'Авторизация'",
+            "start": 1724811560525,
+            "stop": 1724811560525,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -57,9 +57,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131231039",
-            "start": 1724807209089,
-            "stop": 1724807209089,
+            "name": "Ожидание элемента 'Заголовок' в течение 5000 мс",
+            "start": 1724811560922,
+            "stop": 1724811560922,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -73,9 +73,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131230959",
-            "start": 1724807209779,
-            "stop": 1724807209779,
+            "name": "Тап по кнопке 'Выход'",
+            "start": 1724811560923,
+            "stop": 1724811560923,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -89,9 +89,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131230826",
-            "start": 1724807210163,
-            "stop": 1724807210163,
+            "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
+            "start": 1724811561223,
+            "stop": 1724811561223,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -105,9 +105,9 @@
             ]
         },
         {
-            "name": "Ввод News description в поле с id: 2131231126",
-            "start": 1724807212212,
-            "stop": 1724807212212,
+            "name": "Ввод логина в поле 'Логин'",
+            "start": 1724811561224,
+            "stop": 1724811561224,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -121,9 +121,41 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131231198",
-            "start": 1724807212226,
-            "stop": 1724807212226,
+            "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
+            "start": 1724811561230,
+            "stop": 1724811561230,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Ввод пароля в поле 'Пароль'",
+            "start": 1724811561231,
+            "stop": 1724811561231,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Войти'",
+            "start": 1724811562119,
+            "stop": 1724811562119,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -141,9 +173,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "1cf60435-1258-4187-b0df-1abdd873e059",
-    "historyId": "4331ff64c8f61f0942f764bdb6677d13",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.NewsTest.createNewNews",
+    "uuid": "f7937aff-d6e3-4032-8b07-f102b04bab45",
+    "historyId": "acbe2b6f83f19881d9f6a9a98bff059c",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.emptyLoginAndValidPassword",
     "labels": [
         {
             "name": "package",
@@ -151,15 +183,15 @@
         },
         {
             "name": "testClass",
-            "value": "ru.iteco.fmhandroid.ui.tests.NewsTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
         },
         {
             "name": "testMethod",
-            "value": "createNewNews"
+            "value": "emptyLoginAndValidPassword"
         },
         {
             "name": "suite",
-            "value": "ru.iteco.fmhandroid.ui.tests.NewsTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
         },
         {
             "name": "host",
@@ -167,7 +199,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(629)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(593)"
         },
         {
             "name": "framework",

@@ -88,7 +88,7 @@ public class NewsTest {
 
     @Test
     @DisplayName("Удаление новости")
-    @Description("Первая новость удалится и остальные карточки сместятся вверх")
+    @Description("Созданная новость, будет найдена в списке новостей и удалена")
     public void deleteNews() {
         loginAndNavigateToNewsPage();
         navigateToFullNewsList();

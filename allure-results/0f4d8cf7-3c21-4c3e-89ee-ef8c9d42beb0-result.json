@@ -1,17 +1,17 @@
 {
-    "name": "Отображение версии приложения",
-    "start": 1724807453056,
-    "stop": 1724807462156,
+    "name": "Пустые поля логина и пароля",
+    "start": 1724811578411,
+    "stop": 1724811584414,
     "stage": "finished",
-    "description": "Вы можете просмотреть версию приложения",
+    "description": "Ошибка входа в приложение после оставления полей логина и пароля пустыми",
     "descriptionHtml": null,
     "status": "passed",
     "statusDetails": null,
     "steps": [
         {
-            "name": "Тап по кнопке с id: 2131230842",
-            "start": 1724807457398,
-            "stop": 1724807457398,
+            "name": "Ожидание элемента 'Все новости' в течение 5000 мс",
+            "start": 1724811578789,
+            "stop": 1724811578789,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -25,9 +25,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 16908310",
-            "start": 1724807457775,
-            "stop": 1724807457775,
+            "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
+            "start": 1724811583817,
+            "stop": 1724811583817,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -41,9 +41,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131230969",
-            "start": 1724807459750,
-            "stop": 1724807459750,
+            "name": "Ввод логина в поле 'Логин'",
+            "start": 1724811583819,
+            "stop": 1724811583819,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -57,9 +57,9 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131231039",
-            "start": 1724807460638,
-            "stop": 1724807460638,
+            "name": "Ожидание элемента 'Неизвестный элемент' в течение 5000 мс",
+            "start": 1724811583824,
+            "stop": 1724811583824,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -73,9 +73,25 @@
             ]
         },
         {
-            "name": "Тап по кнопке с id: 2131230735",
-            "start": 1724807461303,
-            "stop": 1724807461303,
+            "name": "Ввод пароля в поле 'Пароль'",
+            "start": 1724811583825,
+            "stop": 1724811583825,
+            "stage": "finished",
+            "description": null,
+            "descriptionHtml": null,
+            "status": "passed",
+            "statusDetails": null,
+            "steps": [
+            ],
+            "attachments": [
+            ],
+            "parameters": [
+            ]
+        },
+        {
+            "name": "Тап по кнопке 'Войти'",
+            "start": 1724811583831,
+            "stop": 1724811583831,
             "stage": "finished",
             "description": null,
             "descriptionHtml": null,
@@ -93,9 +109,9 @@
     ],
     "parameters": [
     ],
-    "uuid": "3fe34546-71bd-4eb4-b406-0d2815cd7606",
-    "historyId": "2916c722a2bd2e8d1790036e9ca9d80d",
-    "fullName": "ru.iteco.fmhandroid.ui.tests.AboutTest.checkAppVersion",
+    "uuid": "0f4d8cf7-3c21-4c3e-89ee-ef8c9d42beb0",
+    "historyId": "462c59e46230fa647f1443648eaed10c",
+    "fullName": "ru.iteco.fmhandroid.ui.tests.LoginTest.EmptyLoginAndEmptyPassword",
     "labels": [
         {
             "name": "package",
@@ -103,15 +119,15 @@
         },
         {
             "name": "testClass",
-            "value": "ru.iteco.fmhandroid.ui.tests.AboutTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
         },
         {
             "name": "testMethod",
-            "value": "checkAppVersion"
+            "value": "EmptyLoginAndEmptyPassword"
         },
         {
             "name": "suite",
-            "value": "ru.iteco.fmhandroid.ui.tests.AboutTest"
+            "value": "ru.iteco.fmhandroid.ui.tests.LoginTest"
         },
         {
             "name": "host",
@@ -119,7 +135,7 @@
         },
         {
             "name": "thread",
-            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(659)"
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(593)"
         },
         {
             "name": "framework",

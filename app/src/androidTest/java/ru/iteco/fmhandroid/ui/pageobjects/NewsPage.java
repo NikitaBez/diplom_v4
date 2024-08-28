@@ -44,26 +44,47 @@ public class NewsPage {
     private AppManager appManager = new AppManager();
     private String title;
 
+//    public void checkNewsPage() {
+//        onView(withId(R.id.all_news_cards_block_constraint_layout))
+//                .check(matches(isDisplayed()));
+//    }
+
     public void checkNewsPage() {
+        Allure.step("Проверка отображения страницы новостей");
         onView(withId(R.id.all_news_cards_block_constraint_layout))
                 .check(matches(isDisplayed()));
     }
 
+//    public void clickEditButton() {
+//        Allure.step("Тап по кнопке с id: " + R.id.edit_news_material_button);
+//        onView(withId(R.id.edit_news_material_button))
+//                .check(matches(isDisplayed()))
+//                .perform(click());
+//    }
+
     public void clickEditButton() {
-        Allure.step("Тап по кнопке с id: " + R.id.edit_news_material_button);
+        Allure.step("Тап по кнопке 'Редактировать новости'");
         onView(withId(R.id.edit_news_material_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
+//    public void clickCreateNewsButton() {
+//        Allure.step("Тап по кнопке с id: " + R.id.add_news_image_view);
+//        onView(withId(R.id.add_news_image_view))
+//                .check(matches(isDisplayed()))
+//                .perform(click());
+//    }
+
     public void clickCreateNewsButton() {
-        Allure.step("Тап по кнопке с id: " + R.id.add_news_image_view);
+        Allure.step("Тап по кнопке 'Создать новость'");
         onView(withId(R.id.add_news_image_view))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
     public void clickOnDropdownCategory() {
+        Allure.step("Открытие выпадающего списка категорий");
         ViewInteraction checkableImageButton = onView(
                 allOf(withId(com.google.android.material.R.id.text_input_end_icon), withContentDescription("Show dropdown menu"),
                         childAtPosition(
@@ -76,17 +97,20 @@ public class NewsPage {
     }
 
     public void inputTitle(String title) {
+        Allure.step("Ввод заголовка новости");
         ViewInteraction textInputEditText = onView(withId(R.id.news_item_title_text_input_edit_text));
         textInputEditText.perform(click());
         textInputEditText.perform(replaceText(title));
     }
 
     public void inputCurrentDate(String date) {
+        Allure.step("Ввод текущей даты");
         ViewInteraction textInputEditText = onView(allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
         textInputEditText.perform(replaceText(date));
     }
 
     public void inputCurrentTime() {
+        Allure.step("Ввод текущего времени");
         ViewInteraction textInputEditText4 = onView(
                 allOf(withId(R.id.news_item_publish_time_text_input_edit_text),
                         childAtPosition(
@@ -108,7 +132,7 @@ public class NewsPage {
     }
 
     public void clickSaveButton() {
-        Allure.step("Тап по кнопке с id: " + R.id.save_button);
+        Allure.step("Тап по кнопке 'Сохранить новость'");
         onView(withId(R.id.save_button))
                 .check(matches(isDisplayed()))
                 .perform(click());
@@ -155,6 +179,7 @@ public class NewsPage {
     }
 
     public void warningNewsDeletion() {
+        Allure.step("Проверка предупреждения при удалении новости");
         waitElement(R.id.news_list_recycler_view, 9000);
 
         onView(allOf(withId(R.id.news_item_material_card_view), hasDescendant(withText(title))))
@@ -166,6 +191,7 @@ public class NewsPage {
     }
 
     public void deleteNews() {
+        Allure.step("Удаление новости");
         warningNewsDeletion();
         ViewInteraction materialButton2 = onView(
                 allOf(withId(android.R.id.button1), withText("OK"),
@@ -187,6 +213,7 @@ public class NewsPage {
 
 
     public void undoNewsDeletion() {
+        Allure.step("Отмена удаления новости");
         int countBeforeCancel = getItemCountFromRecyclerView();
         warningNewsDeletion();
 
@@ -202,6 +229,43 @@ public class NewsPage {
         waitElement((R.id.news_list_recycler_view), 5000);
         int countAfterCancel = getItemCountFromRecyclerView();
         assertEquals(countBeforeCancel, countAfterCancel);
+    }
+
+    private String getElementDescription(int viewId) {
+        switch (viewId) {
+            case R.id.edit_news_material_button:
+                return "Редактировать новости";
+            case R.id.add_news_image_view:
+                return "Создать новость";
+            case R.id.save_button:
+                return "Сохранить новость";
+            case R.id.news_item_title_text_input_edit_text:
+                return "Заголовок новости";
+            case R.id.news_item_publish_date_text_input_edit_text:
+                return "Дата публикации";
+            case R.id.news_item_publish_time_text_input_edit_text:
+                return "Время публикации";
+            case R.id.news_item_description_text_input_edit_text:
+                return "Описание новости";
+            case R.id.filter_news_material_button:
+                return "Фильтр новостей";
+            case R.id.news_list_recycler_view:
+                return "Список новостей";
+            case R.id.delete_news_item_image_view:
+                return "Удалить новость";
+            case R.id.news_item_category_text_auto_complete_text_view:
+                return "Категория новости";
+            case R.id.news_item_publish_date_start_text_input_edit_text:
+                return "Дата начала публикации";
+            case R.id.news_item_publish_date_end_text_input_edit_text:
+                return "Дата окончания публикации";
+            case android.R.id.button1:
+                return "Кнопка OK";
+            case android.R.id.button2:
+                return "Кнопка Cancel";
+            default:
+                return "Неизвестный элемент";
+        }
     }
 
 }

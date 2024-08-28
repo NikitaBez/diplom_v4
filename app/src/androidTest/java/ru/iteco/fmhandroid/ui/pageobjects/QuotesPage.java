@@ -36,4 +36,17 @@ public class QuotesPage {
         ViewInteraction textView2 = onView(allOf(withId(R.id.our_mission_item_description_text_view), withText(text)));
         textView2.check(matches(withText(text)));
     }
+
+    private String getElementDescription(int viewId) {
+        switch (viewId) {
+            case R.id.our_mission_title_text_view:
+                return "Заголовок 'Наша миссия'";
+            case R.id.our_mission_item_list_recycler_view:
+                return "Список цитат";
+            case R.id.our_mission_item_description_text_view:
+                return "Описание цитаты";
+            default:
+                return "Неизвестный элемент";
+        }
+    }
 }
